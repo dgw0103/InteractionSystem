@@ -1,7 +1,7 @@
 {
-  "name": "Unity.com.hojin.InteractionSystem.Tests",
+  "name": "Unity.com.{{COMPANY}}.{{REPOSITORY_NAME}}.Tests",
   "references": [
-    "Unity.com.hojin.InteractionSystem"
+    "Unity.com.{{COMPANY}}.{{REPOSITORY_NAME}}"
   ],
   "optionalUnityReferences": [
     "TestAssemblies"

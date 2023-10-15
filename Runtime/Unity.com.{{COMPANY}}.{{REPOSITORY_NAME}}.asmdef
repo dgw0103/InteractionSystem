@@ -1,9 +1,7 @@
 {
-    "name": "Unity.com.hojin.InteractionSystem.Editor",
+    "name": "Unity.com.{{COMPANY}}.{{REPOSITORY_NAME}}",
     "references": [],
-    "includePlatforms": [
-        "Editor"
-    ],
+    "includePlatforms": [],
     "excludePlatforms": [],
     "allowUnsafeCode": false,
     "overrideReferences": false,

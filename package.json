@@ -2,6 +2,7 @@
   "name": "com.hojin.interactionsystem",
   "displayName": "InteractionSystem",
   "version": "1.0.0",
+  "description": "Test",
   "keywords": 
   [
     "unity",
@@ -15,7 +16,8 @@
   {
     "url": "https://github.com/dgw0103/InteractionSystem/issues"
   },
-  "repository": {
+  "repository": 
+  {
     "type": "git",
     "url": "git+ssh://git@github.com/dgw0103/InteractionSystem.git"
   },

@@ -20,6 +20,7 @@
     "url": "git+ssh://git@github.com/dgw0103/InteractionSystem.git"
   },
   "license": "MIT",
+  "author": "HoJin",
   "scripts": 
   {
     "test": "echo \"Error: no test specified\" && exit 1"

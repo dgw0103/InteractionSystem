@@ -1,7 +1,7 @@
 {
-  "name": "Unity.com.{{COMPANY}}.{{REPOSITORY_NAME}}.Tests",
+  "name": "Unity.com.dgw0103.interactionsystem.Editor.Tests",
   "references": [
-    "Unity.com.{{COMPANY}}.{{REPOSITORY_NAME}}"
+    "Unity.com.dgw0103.interactionsystem"
   ],
   "optionalUnityReferences": [
     "TestAssemblies"

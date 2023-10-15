@@ -1,20 +1,27 @@
 {
-  "name": "com.3d-group.unity-package-template",
-  "displayName": "3D Group - Unity package template",
-  "version": "1.1.3",
-  "description": "Template for creating Unity game engine packages",
-  "dependencies": {},
-  "homepage": "https://github.com/3d-group/unity-package-template.git",
-  "bugs": {
-    "url": "https://github.com/3d-group/unity-package-template/issues"
+  "name": "com.hojin.interactionsystem",
+  "displayName": "InteractionSystem",
+  "version": "1.0.0",
+  "keywords": 
+  [
+    "unity",
+    "unity3d",
+    "upm",
+    "hojin",
+    "utility"
+  ],
+  "homepage": "https://github.com/dgw0103/InteractionSystem.git",
+  "bugs": 
+  {
+    "url": "https://github.com/dgw0103/InteractionSystem/issues"
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/3d-group/unity-package-template.git"
+    "url": "git+ssh://git@github.com/dgw0103/InteractionSystem.git"
   },
   "license": "MIT",
-  "author": "3D Group (https://3d.fi/)",
-  "scripts": {
+  "scripts": 
+  {
     "test": "echo \"Error: no test specified\" && exit 1"
   }
 }

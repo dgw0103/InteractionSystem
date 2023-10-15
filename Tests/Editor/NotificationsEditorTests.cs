@@ -7,7 +7,7 @@ using UnityEngine.UI;
 
 namespace Tests.Editor
 {
-    public class {{FRIENDLY_NAME}}Tests
+    public class NotificationsTests
     {
         [SetUp]
         public void Setup()

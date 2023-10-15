@@ -1,11 +1,8 @@
-[![npm package](https://img.shields.io/npm/v/com.dgw0103.interactionsystem)](https://www.npmjs.com/package/com.dgw0103.interactionsystem)
-[![openupm](https://img.shields.io/npm/v/com.dgw0103.interactionsystem?label=openupm&registry_uri=https://package.openupm.com)](https://openupm.com/packages/com.dgw0103.interactionsystem/)
-![Tests](https://github.com/dgw0103/interactionsystem/workflows/Tests/badge.svg)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
 
-# Notifications
+# Interaction system
 
-Package for Unity game engine.
+Interaction system.
 
 - [How to use](#how-to-use)
 - [Install](#install)

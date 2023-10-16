@@ -5,8 +5,8 @@
   "description": "Interaction system",
   "keywords": [
     "unity",
-	"unity3d",
-	"upm",
+    "unity3d",
+    "upm",
     "dgw0103",
     "utility"
   ],
@@ -20,6 +20,7 @@
   },
   "license": "MIT",
   "author": "dgw0103",
+  "documentationUrl": "https://naver.com/",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   }

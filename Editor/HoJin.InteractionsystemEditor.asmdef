@@ -1,6 +1,9 @@
 {
-    "name": "Unity.com.dgw0103.interactionsystem.Editor",
-    "references": [],
+    "name": "HoJin.InteractionSystemEditor",
+    "rootNamespace": "HoJin.InteractionSystemEditor",
+    "references": [
+        "GUID:8a4d33ac809da944b9bbac1301dd6b25"
+    ],
     "includePlatforms": [
         "Editor"
     ],

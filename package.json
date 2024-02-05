@@ -1,27 +1,25 @@
 {
   "name": "com.dgw0103.interactionsystem",
-  "displayName": "InteractionSystem",
-  "version": "1.0.0",
+  "version": "0.0.0",
+
   "description": "Interaction system",
+  "displayName": "InteractionSystem",
+
+  "author": "dgw0103",
+  "dependencies": {
+    "com.dgw0103.unity_serializabledictionary": "0.0.0"
+  },
   "keywords": [
-    "unity",
-    "unity3d",
-    "upm",
     "dgw0103",
-    "utility"
+    "interaction"
   ],
+  "license": "MIT",
   "homepage": "https://github.com/dgw0103/InteractionSystem.git",
   "bugs": {
     "url": "https://github.com/dgw0103/InteractionSystem/issues"
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/dgw0103/interactionsystem.git"
-  },
-  "license": "MIT",
-  "author": "dgw0103",
-  "documentationUrl": "https://naver.com/",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "url": "https://github.com/dgw0103/SerializableDictionary.git"
   }
 }

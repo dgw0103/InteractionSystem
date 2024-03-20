@@ -3,7 +3,8 @@
     "rootNamespace": "HoJin.InteractionSystem",
     "references": [
         "GUID:75469ad4d38634e559750d17036d5f7c",
-        "GUID:4ec79cc9a3f8e1f4a83d00f780b7241d"
+        "GUID:4ec79cc9a3f8e1f4a83d00f780b7241d",
+        "GUID:6005b74d1b4794043a89f8474b04eeaa"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

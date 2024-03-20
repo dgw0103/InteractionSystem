@@ -4,10 +4,11 @@
 
   "description": "Interaction system",
   "displayName": "InteractionSystem",
+  "unity": "2019.1",
 
   "author": "dgw0103",
   "dependencies": {
-    "com.dgw0103.unity_serializabledictionary": "0.0.0"
+    "com.unity.inputsystem": "1.0.2"
   },
   "keywords": [
     "dgw0103",
@@ -20,6 +21,6 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/dgw0103/SerializableDictionary.git"
+    "url": "https://github.com/dgw0103/InteractionSystem.git"
   }
 }

@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactionLayerMask:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 0
   blockingLayerMask:
     serializedVersion: 2
-    m_Bits: 512
+    m_Bits: 0

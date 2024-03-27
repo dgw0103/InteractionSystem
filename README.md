@@ -15,23 +15,16 @@ This is whole structure.<br>
 Contents inside of Main are objects that are made from the Unity project. It means that this package don't include those.
 
 ### Get starting
+1. Copy this url.
+2. Open the Package Manager window in Unity.
+3. Click plus icon in left up and paste git url.
+4. Download and import.
 
 ### Make any interaction object
-1. Create a script for interaction object that you want to make.
+1. Create a script as component for interaction object that you want to make.
 2. The script inherits from the 'InteractionObject'.
 3. Implement abstract functions.
-
-## Install
-### via Git URL
-
-Open `Packages/manifest.json` with your favorite text editor. Add following line to the dependencies block:
-```json
-{
-  "dependencies": {
-    "com.dgw0103.interactionsystem": "https://github.com/dgw0103/interactionsystem.git"
-  }
-}
-```
+4. Add to GameObject to use.
 
 ## License
 

@@ -129,5 +129,6 @@ namespace HoJin.InteractionSystem
                 currentTarget.OnReleased();
             }
         }
+        public float MaxDistance { get => maxDistance; }
     }
 }

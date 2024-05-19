@@ -50,23 +50,19 @@ namespace HoJin.InteractionSystem
 
         public override void OnTargeted()
         {
-            Debug.Log(nameof(OnTargeted));
             for (int i = 0; i < materials.Count; i++)
             {
                 previousTargetingColors[i] = materials[i].GetColor(lightEmissionData.EmissionColorKeyword);
+                Debug.Log($"previous color is {previousTargetingColors[i]}");
                 materials[i].SetColor(lightEmissionData.EmissionColorKeyword, lightEmissionData.EmissionColor);
             }
         }
         public override void OnReleased()
         {
-            Debug.Log(nameof(OnReleased));
-            int i = 0;
-
-
-
-            foreach (var item in previousTargetingColors)
+            for (int i = 0; i < materials.Count; i++)
             {
-                materials[i].SetColor(lightEmissionData.EmissionColorKeyword, item);
+                materials[i].SetColor(lightEmissionData.EmissionColorKeyword, previousTargetingColors[i]);
+                Debug.Log($"set to {materials[i].GetColor(lightEmissionData.EmissionColorKeyword)}");
             }
         }
     }

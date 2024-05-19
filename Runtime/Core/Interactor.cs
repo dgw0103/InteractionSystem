@@ -12,6 +12,7 @@ namespace HoJin.InteractionSystem
         [SerializeField] private InteractionSystemData interactionSystemData;
         [SerializeField] private float maxDistance = 1.5f;
         private InteractionObject currentTarget = null;
+        public event Action OnInteraction;
 
 
 
@@ -36,6 +37,7 @@ namespace HoJin.InteractionSystem
                 if (HasCurrentTarget)
                 {
                     currentTarget.OnInteractionPerformed(this);
+                    OnInteraction?.Invoke();
                 }
             }
             void OnCanceled()

@@ -53,7 +53,6 @@ namespace HoJin.InteractionSystem
             for (int i = 0; i < materials.Count; i++)
             {
                 previousTargetingColors[i] = materials[i].GetColor(lightEmissionData.EmissionColorKeyword);
-                Debug.Log($"previous color is {previousTargetingColors[i]}");
                 materials[i].SetColor(lightEmissionData.EmissionColorKeyword, lightEmissionData.EmissionColor);
             }
         }
@@ -62,7 +61,6 @@ namespace HoJin.InteractionSystem
             for (int i = 0; i < materials.Count; i++)
             {
                 materials[i].SetColor(lightEmissionData.EmissionColorKeyword, previousTargetingColors[i]);
-                Debug.Log($"set to {materials[i].GetColor(lightEmissionData.EmissionColorKeyword)}");
             }
         }
     }

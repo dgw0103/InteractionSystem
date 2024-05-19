@@ -50,6 +50,7 @@ namespace HoJin.InteractionSystem
 
         public override void OnTargeted()
         {
+            Debug.Log(nameof(OnTargeted));
             for (int i = 0; i < materials.Count; i++)
             {
                 previousTargetingColors[i] = materials[i].GetColor(lightEmissionData.EmissionColorKeyword);
@@ -58,6 +59,7 @@ namespace HoJin.InteractionSystem
         }
         public override void OnReleased()
         {
+            Debug.Log(nameof(OnReleased));
             int i = 0;
 
 

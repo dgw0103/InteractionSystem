@@ -2,11 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using HoJin.SerializableDictionary;
 
 namespace HoJin.InteractionSystem
 {
     [Serializable]
-    public class MeshRendererIntHashsetDictionary : SerializableDictionary<MeshRenderer, IntHashset>
+    public class RendererIntHashsetDictionary : SerializableDictionary<Renderer, IntHashset>
     {
         
     }

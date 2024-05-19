@@ -8,7 +8,7 @@ namespace HoJin.InteractionSystem
 {
     public class LightEmission : Targeting
     {
-        [SerializeField] private MeshRendererIntHashsetDictionary except;
+        [SerializeField] private RendererIntHashsetDictionary except;
         [SerializeField] private LightEmissionData lightEmissionData;
         private List<Material> materials = new List<Material>();
         private Color[] previousTargetingColors;
@@ -17,7 +17,7 @@ namespace HoJin.InteractionSystem
 
         private void Awake()
         {
-            foreach (var meshRenderer in GetComponentsInChildren<MeshRenderer>(true))
+            foreach (var meshRenderer in GetComponentsInChildren<Renderer>(true))
             {
                 if (except.TryGetValue(meshRenderer, out IntHashset intHashSet))
                 {

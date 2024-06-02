@@ -1,6 +1,6 @@
 using UnityEditor;
 using UnityEngine;
-using HoJin.InteractionSystem;
+using InteractionSystem;
 
 namespace HoJin.InteractionSystemEditor
 {

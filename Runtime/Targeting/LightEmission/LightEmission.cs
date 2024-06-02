@@ -4,7 +4,7 @@ using UnityEngine;
 using System.Linq;
 using System;
 
-namespace HoJin.InteractionSystem
+namespace InteractionSystem
 {
     public class LightEmission : MonoBehaviour, ITargeting
     {

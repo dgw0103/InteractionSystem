@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Rendering;
 
-namespace HoJin.InteractionSystem
+namespace InteractionSystem
 {
     [CreateAssetMenu(fileName = nameof(InteractionSystemData), menuName = "InteractionSystem/" + nameof(InteractionSystemData))]
     public class InteractionSystemData : ScriptableObject

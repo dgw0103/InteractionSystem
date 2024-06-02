@@ -1,6 +1,6 @@
 {
-    "name": "HoJin.InteractionSystem",
-    "rootNamespace": "HoJin.InteractionSystem",
+    "name": "InteractionSystem",
+    "rootNamespace": "InteractionSystem",
     "references": [
         "GUID:75469ad4d38634e559750d17036d5f7c",
         "GUID:4ec79cc9a3f8e1f4a83d00f780b7241d",

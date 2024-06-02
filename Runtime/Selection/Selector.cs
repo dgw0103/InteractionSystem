@@ -3,25 +3,33 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-namespace HoJin.InteractionSystem
+namespace InteractionSystem
 {
     public class Selector : MonoBehaviour
     {
-        [SerializeField] private SelectionsInput selectionsInput;
-        private Stack<Selections> currentSelections = new Stack<Selections>();
+        [SerializeField] private SelectionInput selectionInput;
+        private Stack<Selection> currentSelections = new Stack<Selection>();
 
 
 
         private void Awake()
         {
-            selectionsInput.Init(Unselect);
+            selectionInput.Init(Unselect);
+        }
+        private void OnEnable()
+        {
+            selectionInput.EnableUnselectionAction();
+        }
+        private void OnDisable()
+        {
+            selectionInput.DisableUnselectionAction();
         }
 
 
 
-        public void Select(Selections selection)
+        public void Select(Selection selection)
         {
-            if (currentSelections.TryPeek(out Selections last))
+            if (currentSelections.TryPeek(out Selection last))
             {
                 if (last.GetType().Equals(GetType()) == false)
                 {
@@ -37,11 +45,11 @@ namespace HoJin.InteractionSystem
             currentSelections.Push(selection);
             selection.OnSelect(this);
         }
-        public void Unselect(Selections selection)
+        public void Unselect(Selection selection)
         {
             selection.OnUnselect(this);
             currentSelections.Pop();
-            if (currentSelections.TryPeek(out Selections last))
+            if (currentSelections.TryPeek(out Selection last))
             {
                 if (last.GetType().Equals(GetType()) == false)
                 {
@@ -57,19 +65,18 @@ namespace HoJin.InteractionSystem
         }
         private void Unselect()
         {
-            if (currentSelections.TryPeek(out Selections selection))
+            if (currentSelections.TryPeek(out Selection selection))
             {
                 Unselect(selection);
             }
         }
-        public Stack<Selections> CurrentSelections { get => currentSelections; }
-        public void EnableUnselectionAction()
+        private void EnableUnselectionAction()
         {
-            selectionsInput.EnableUnselectionAction();
+            selectionInput.EnableUnselectionAction();
         }
-        public void DisableUnselectionAction()
+        private void DisableUnselectionAction()
         {
-            selectionsInput.DisableUnselectionAction();
+            selectionInput.DisableUnselectionAction();
         }
     }
 }

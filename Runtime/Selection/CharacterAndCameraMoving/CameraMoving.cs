@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace HoJin.InteractionSystem
+namespace InteractionSystem
 {
     public abstract class CameraMoving : MonoBehaviour
     {

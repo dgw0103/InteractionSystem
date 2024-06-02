@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering;
 
-namespace HoJin.InteractionSystem
+namespace InteractionSystem
 {
     [CreateAssetMenu(fileName = "LightEmissionData", menuName = "InteractionSystem/Targeting/LightEmission")]
     public class LightEmissionData : ScriptableObject

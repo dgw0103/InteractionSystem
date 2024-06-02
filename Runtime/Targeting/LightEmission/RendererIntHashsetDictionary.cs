@@ -4,7 +4,7 @@ using UnityEngine;
 using System;
 using HoJin.SerializableDictionary;
 
-namespace HoJin.InteractionSystem
+namespace InteractionSystem
 {
     [Serializable]
     public class RendererIntHashsetDictionary : SerializableDictionary<Renderer, IntHashset>

@@ -4,7 +4,7 @@ using UnityEngine;
 using System;
 using System.Linq;
 
-namespace HoJin.InteractionSystem
+namespace InteractionSystem
 {
     public abstract class InteractionObject : MonoBehaviour
     {

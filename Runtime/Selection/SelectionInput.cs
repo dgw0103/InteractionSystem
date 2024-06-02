@@ -4,10 +4,10 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using System;
 
-namespace HoJin.InteractionSystem
+namespace InteractionSystem
 {
     [Serializable]
-    public class SelectionsInput
+    public class SelectionInput
     {
         [SerializeField] private InputActionReference unselectionActionReference;
         private InputAction unselectionAction;

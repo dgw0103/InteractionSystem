@@ -3,9 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace HoJin.InteractionSystem
+namespace InteractionSystem
 {
-    public class Examining : Selections
+    public class Examining : Selection
     {
         [SerializeField] private AudioSource pickUpSound;
         [SerializeField] private float examiningDistance;

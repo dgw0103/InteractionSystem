@@ -1,6 +1,6 @@
 {
-    "name": "HoJin.InteractionSystemEditor",
-    "rootNamespace": "HoJin.InteractionSystemEditor",
+    "name": "InteractionSystemEditor",
+    "rootNamespace": "InteractionSystemEditor",
     "references": [
         "GUID:8a4d33ac809da944b9bbac1301dd6b25"
     ],

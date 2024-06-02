@@ -2,7 +2,7 @@ using UnityEngine;
 using System;
 using UnityEngine.InputSystem;
 
-namespace HoJin.InteractionSystem
+namespace InteractionSystem
 {
     [Serializable]
     public class InteractionInput
@@ -22,11 +22,11 @@ namespace HoJin.InteractionSystem
 
         
 
-        public void Enable()
+        public void EnableInteractionAction()
         {
             interactionAction.Enable();
         }
-        public void Disable()
+        public void DisableInteractionAction()
         {
             interactionAction.Disable();
         }

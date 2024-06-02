@@ -4,9 +4,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-namespace HoJin.InteractionSystem
+namespace InteractionSystem
 {
-    public abstract class Selections : MonoBehaviour
+    public abstract class Selection : MonoBehaviour
     {
         public abstract void SetAsThisTypeState(Selector selector);
         public abstract void UnsetAsThisTypeState(Selector selector);

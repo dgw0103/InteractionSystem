@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace HoJin.InteractionSystem
+namespace InteractionSystem
 {
     public class Interactor : MonoBehaviour
     {
@@ -19,7 +19,7 @@ namespace HoJin.InteractionSystem
         private void Awake()
         {
             interactionInput.Init(OnStarted, OnPerformed, OnCanceled);
-            interactionInput.Enable();
+            interactionInput.EnableInteractionAction();
             
 
 
@@ -55,7 +55,7 @@ namespace HoJin.InteractionSystem
                 OnRelease();
                 CurrentTarget = null;
             }
-            interactionInput.Enable();
+            interactionInput.EnableInteractionAction();
         }
         private void Update()
         {
@@ -108,7 +108,7 @@ namespace HoJin.InteractionSystem
         }
         private void OnDisable()
         {
-            interactionInput.Disable();
+            interactionInput.DisableInteractionAction();
         }
 
 

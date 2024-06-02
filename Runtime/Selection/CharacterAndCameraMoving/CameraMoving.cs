@@ -2,13 +2,13 @@ using UnityEngine;
 
 namespace InteractionSystem
 {
-    public abstract class CameraMoving : MonoBehaviour
+    public interface CameraMoving
     {
-        public abstract void EnableMoving();
-        public abstract void DisableMoving();
-        public abstract void SetPositionAndRotation(Vector3 position, Quaternion rotation);
-        public abstract void SetLocalPositionAndRotation(Vector3 localPosition, Quaternion localRotation);
-        public abstract Vector3 LocalPosition { get; }
-        public abstract Quaternion LocalRotation { get; }
+        public void EnableMoving();
+        public void DisableMoving();
+        public void SetPositionAndRotation(Vector3 position, Quaternion rotation);
+        public void SetLocalPositionAndRotation(Vector3 localPosition, Quaternion localRotation);
+        public Vector3 LocalPosition { get; }
+        public Quaternion LocalRotation { get; }
     }
 }

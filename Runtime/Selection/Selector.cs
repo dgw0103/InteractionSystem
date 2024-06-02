@@ -5,6 +5,7 @@ using System;
 
 namespace InteractionSystem
 {
+    [AddComponentMenu(nameof(InteractionSystem) + "/" + nameof(Selector))]
     public class Selector : MonoBehaviour
     {
         [SerializeField] private SelectionInput selectionInput;

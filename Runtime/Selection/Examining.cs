@@ -5,6 +5,7 @@ using UnityEngine;
 
 namespace InteractionSystem
 {
+    [AddComponentMenu(nameof(InteractionSystem) + "/" + nameof(Examining))]
     public class Examining : Selection
     {
         [SerializeField] private AudioSource pickUpSound;
@@ -126,7 +127,7 @@ namespace InteractionSystem
             }
             else
             {
-                Debug.LogWarning($"No {nameof(CharacterMoving)} component in interactor object");
+                Debug.LogWarning($"Selector has not {nameof(CharacterMoving)} component");
             }
             if (selector.TryGetComponent(out CameraMoving cameraMoving))
             {
@@ -134,7 +135,7 @@ namespace InteractionSystem
             }
             else
             {
-                Debug.LogWarning($"No {nameof(CameraMoving)} component in interactor object");
+                Debug.LogWarning($"Selector has not {nameof(CameraMoving)} component");
             }
         }
         public override void UnsetAsThisTypeState(Selector selector)

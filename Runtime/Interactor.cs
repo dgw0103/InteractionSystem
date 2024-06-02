@@ -5,6 +5,7 @@ using UnityEngine;
 
 namespace InteractionSystem
 {
+    [AddComponentMenu(nameof(InteractionSystem) + "/" + nameof(Interactor))]
     public class Interactor : MonoBehaviour
     {
         [SerializeField] private Transform rayShooter;

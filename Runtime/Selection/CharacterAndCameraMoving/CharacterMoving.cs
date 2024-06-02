@@ -2,9 +2,9 @@ using UnityEngine;
 
 namespace InteractionSystem
 {
-    public abstract class CharacterMoving : MonoBehaviour
+    public interface CharacterMoving
     {
-        public abstract void EnableMoving();
-        public abstract void DisableMoving();
+        public void EnableMoving();
+        public void DisableMoving();
     }
 }

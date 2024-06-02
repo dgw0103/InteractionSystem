@@ -6,6 +6,7 @@ using System;
 
 namespace InteractionSystem
 {
+    [AddComponentMenu(nameof(InteractionSystem) + "/" + nameof(LightEmission))]
     public class LightEmission : MonoBehaviour, ITargeting
     {
         [SerializeField] private RendererIntHashsetDictionary except;

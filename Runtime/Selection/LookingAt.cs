@@ -4,6 +4,7 @@ using UnityEngine;
 
 namespace InteractionSystem
 {
+    [AddComponentMenu(nameof(InteractionSystem) + "/" + nameof(LookingAt))]
     public class LookingAt : Selection
     {
         [SerializeField] private Transform cameraPoint;

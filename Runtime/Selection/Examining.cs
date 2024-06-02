@@ -24,23 +24,7 @@ namespace InteractionSystem
 
         public override void SetAsThisTypeState(Selector selector)
         {
-            if (selector.TryGetComponent(out CharacterMoving characterMoving))
-            {
-                characterMoving.EnableMoving();
-            }
-            else
-            {
-                Debug.LogWarning($"Selector has not {nameof(CharacterMoving)} component");
-            }
-            if (selector.TryGetComponent(out CameraMoving cameraMoving))
-            {
-                cameraMoving.EnableMoving();
-            }
-            else
-            {
-                Debug.LogWarning($"Selector has not {nameof(CameraMoving)} component");
-            }
-
+            EnabledPlayerMoving(selector, false);
             EnabledInteractableAndTargetable = false;
         }
         private bool EnabledInteractableAndTargetable
@@ -57,8 +41,20 @@ namespace InteractionSystem
                 }
             }
         }
+        private void EnabledPlayerMoving(Selector selector, bool value)
+        {
+            if (selector.TryGetComponent(out IPlayerMoving playerMoving))
+            {
+                playerMoving.Enabled = value;
+            }
+            else
+            {
+                Debug.LogWarning($"Selector GameObject has not {nameof(IPlayerMoving)} component");
+            }
+        }
         public override void UnsetAsThisTypeState(Selector selector)
         {
+            EnabledPlayerMoving(selector, true);
             EnabledInteractableAndTargetable = true;
         }
         public override void OnSelect(Selector selector)

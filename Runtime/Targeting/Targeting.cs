@@ -16,5 +16,6 @@ namespace InteractionSystem
         public abstract void OnTargeted();
         public abstract void OnReleased();
         public bool Enabled { get => enabled; set => enabled = value; }
+        public abstract bool IsTargeted { get; }
     }
 }

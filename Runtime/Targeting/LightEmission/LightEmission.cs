@@ -13,6 +13,7 @@ namespace InteractionSystem
         [SerializeField] private LightEmissionData lightEmissionData;
         private List<Material> materials = new List<Material>();
         private Color[] previousTargetingColors;
+        private bool isTargeted = false;
 
 
 
@@ -64,5 +65,6 @@ namespace InteractionSystem
                 materials[i].SetColor(lightEmissionData.EmissionColorKeyword, previousTargetingColors[i]);
             }
         }
+        public override bool IsTargeted { get => isTargeted; }
     }
 }

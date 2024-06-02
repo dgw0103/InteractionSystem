@@ -21,7 +21,7 @@ namespace HoJin.InteractionSystem
 
 
 
-        protected override void OnSelect(Selector selector)
+        public override void OnSelect(Selector selector)
         {
             OnSelect(selector.transform);
         }
@@ -97,9 +97,8 @@ namespace HoJin.InteractionSystem
             }
 
             previousLayer = gameObject.layer;
-            
         }
-        protected override void OnUnselect()
+        public override void OnUnselect(Selector selector)
         {
             transform.localPosition = previousLocalPosition;
             transform.localRotation = previousLocalRotation;
@@ -119,7 +118,7 @@ namespace HoJin.InteractionSystem
 
             gameObject.layer = previousLayer;
         }
-        protected override void SetAsThisTypeState(Selector selector)
+        public override void SetAsThisTypeState(Selector selector)
         {
             if (selector.TryGetComponent(out CharacterMoving characterMoving))
             {
@@ -138,7 +137,7 @@ namespace HoJin.InteractionSystem
                 Debug.LogWarning($"No {nameof(CameraMoving)} component in interactor object");
             }
         }
-        protected override void UnsetAsThisTypeState()
+        public override void UnsetAsThisTypeState(Selector selector)
         {
         }
     }

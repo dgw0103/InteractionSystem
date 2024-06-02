@@ -94,9 +94,9 @@ namespace HoJin.InteractionSystem
 
             bool TryNoLookAt()
             {
-                if (HasCurrentTarget)
+                if (HasCurrentTarget && currentTarget.TryGetComponent(out ITargeting targeting))
                 {
-                    currentTarget.OnReleased();
+                    targeting.OnReleased();
                     return true;
                 }
                 else
@@ -117,16 +117,16 @@ namespace HoJin.InteractionSystem
         private bool HasCurrentTarget { get => currentTarget; }
         private void OnTarget()
         {
-            if (HasCurrentTarget)
+            if (HasCurrentTarget && currentTarget.TryGetComponent(out ITargeting targeting))
             {
-                currentTarget.OnTargeted();
+                targeting.OnTargeted();
             }
         }
         private void OnRelease()
         {
-            if (HasCurrentTarget)
+            if (HasCurrentTarget && currentTarget.TryGetComponent(out ITargeting targeting))
             {
-                currentTarget.OnReleased();
+                targeting.OnReleased();
             }
         }
         public float MaxDistance { get => maxDistance; }

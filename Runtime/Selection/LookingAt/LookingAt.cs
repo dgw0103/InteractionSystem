@@ -14,18 +14,18 @@ namespace HoJin.InteractionSystem
 
 
 
-        protected override void SetAsThisTypeState(Selector selector)
+        public override void SetAsThisTypeState(Selector selector)
         {
             if (selector.TryGetComponent(out characterMoving))
             {
                 characterMoving.DisableMoving();
             }
         }
-        protected override void UnsetAsThisTypeState()
+        public override void UnsetAsThisTypeState(Selector selector)
         {
             characterMoving.EnableMoving();
         }
-        protected override void OnSelect(Selector selector)
+        public override void OnSelect(Selector selector)
         {
             if (selector.TryGetComponent(out cameraMoving))
             {
@@ -38,7 +38,7 @@ namespace HoJin.InteractionSystem
                 Debug.LogWarning($"No {nameof(CameraMoving)} component in interactor object");
             }
         }
-        protected override void OnUnselect()
+        public override void OnUnselect(Selector selector)
         {
             cameraMoving.SetLocalPositionAndRotation(previousCameraLocalPosition, previousCameraLocalRotation);
             previousCameraLocalPosition = default;

@@ -6,7 +6,7 @@ using System;
 
 namespace HoJin.InteractionSystem
 {
-    public class LightEmission : Targeting
+    public class LightEmission : MonoBehaviour, ITargeting
     {
         [SerializeField] private RendererIntHashsetDictionary except;
         [SerializeField] private LightEmissionData lightEmissionData;
@@ -48,7 +48,7 @@ namespace HoJin.InteractionSystem
 
 
 
-        public override void OnTargeted()
+        public void OnTargeted()
         {
             for (int i = 0; i < materials.Count; i++)
             {
@@ -56,7 +56,7 @@ namespace HoJin.InteractionSystem
                 materials[i].SetColor(lightEmissionData.EmissionColorKeyword, lightEmissionData.EmissionColor);
             }
         }
-        public override void OnReleased()
+        public void OnReleased()
         {
             for (int i = 0; i < materials.Count; i++)
             {

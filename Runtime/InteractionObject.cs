@@ -11,5 +11,6 @@ namespace InteractionSystem
         public abstract void OnInteractionStarted(Interactor interactor);
         public abstract void OnInteractionPerformed(Interactor interactor);
         public abstract void OnInteractionCanceled(Interactor interactor);
+        public bool Enabled { get => enabled; set => enabled = value; }
     }
 }

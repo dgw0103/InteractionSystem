@@ -28,14 +28,14 @@ namespace InteractionSystem
 
             void OnStarted()
             {
-                if (HasCurrentTarget)
+                if (IsInteractable)
                 {
                     currentTarget.OnInteractionStarted(this);
                 }
             }
             void OnPerformed()
             {
-                if (HasCurrentTarget)
+                if (IsInteractable)
                 {
                     currentTarget.OnInteractionPerformed(this);
                     OnInteraction?.Invoke(currentTarget);
@@ -43,7 +43,7 @@ namespace InteractionSystem
             }
             void OnCanceled()
             {
-                if (HasCurrentTarget)
+                if (IsInteractable)
                 {
                     currentTarget.OnInteractionCanceled(this);
                 }
@@ -51,7 +51,7 @@ namespace InteractionSystem
         }
         private void OnEnable()
         {
-            if (HasCurrentTarget)
+            if (IsInteractable)
             {
                 OnRelease();
                 CurrentTarget = null;
@@ -66,9 +66,7 @@ namespace InteractionSystem
 
 
 
-            if (Physics.Raycast(rayShooter.position, rayShooter.forward, out RaycastHit hit, maxDistance, interactionLayerMask | blockingLayerMask) &&
-                (interactionLayerMask | LayerMask.GetMask(LayerMask.LayerToName(hit.collider.gameObject.layer))).Equals(interactionLayerMask) &&
-                hit.collider.gameObject.TryGetComponent(out InteractionObject target))
+            if (Raycast(out RaycastHit hit) && IsRayHitAtInteractable() && hit.transform.gameObject.TryGetComponent(out InteractionObject target))
             {
                 if (target.Equals(currentTarget) == false)
                 {
@@ -93,9 +91,17 @@ namespace InteractionSystem
 
 
 
+            bool Raycast(out RaycastHit raycastHit)
+            {
+                return Physics.Raycast(rayShooter.position, rayShooter.forward, out raycastHit, maxDistance, interactionLayerMask | blockingLayerMask);
+            }
+            bool IsRayHitAtInteractable()
+            {
+                return (interactionLayerMask | LayerMask.GetMask(LayerMask.LayerToName(hit.collider.gameObject.layer))).Equals(interactionLayerMask);
+            }
             bool TryNoLookAt()
             {
-                if (HasCurrentTarget && currentTarget.TryGetComponent(out ITargeting targeting))
+                if (IsTargetable(out Targeting targeting))
                 {
                     targeting.OnReleased();
                     return true;
@@ -115,17 +121,30 @@ namespace InteractionSystem
 
 
         private InteractionObject CurrentTarget { set => currentTarget = value; }
+        private bool IsInteractable { get => HasCurrentTarget && currentTarget.Enabled; }
         private bool HasCurrentTarget { get => currentTarget; }
+        private bool IsTargetable(out Targeting targeting)
+        {
+            if (HasCurrentTarget)
+            {
+                return currentTarget.TryGetComponent(out targeting) && targeting.Enabled;
+            }
+            else
+            {
+                targeting = null;
+                return false;
+            }
+        }
         private void OnTarget()
         {
-            if (HasCurrentTarget && currentTarget.TryGetComponent(out ITargeting targeting))
+            if (IsTargetable(out Targeting targeting))
             {
                 targeting.OnTargeted();
             }
         }
         private void OnRelease()
         {
-            if (HasCurrentTarget && currentTarget.TryGetComponent(out ITargeting targeting))
+            if (IsTargetable(out Targeting targeting))
             {
                 targeting.OnReleased();
             }

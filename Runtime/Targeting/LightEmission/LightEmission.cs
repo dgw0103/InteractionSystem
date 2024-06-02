@@ -7,7 +7,7 @@ using System;
 namespace InteractionSystem
 {
     [AddComponentMenu(nameof(InteractionSystem) + "/" + nameof(LightEmission))]
-    public class LightEmission : MonoBehaviour, ITargeting
+    public class LightEmission : Targeting
     {
         [SerializeField] private RendererIntHashsetDictionary except;
         [SerializeField] private LightEmissionData lightEmissionData;
@@ -49,7 +49,7 @@ namespace InteractionSystem
 
 
 
-        public void OnTargeted()
+        public override void OnTargeted()
         {
             for (int i = 0; i < materials.Count; i++)
             {
@@ -57,7 +57,7 @@ namespace InteractionSystem
                 materials[i].SetColor(lightEmissionData.EmissionColorKeyword, lightEmissionData.EmissionColor);
             }
         }
-        public void OnReleased()
+        public override void OnReleased()
         {
             for (int i = 0; i < materials.Count; i++)
             {

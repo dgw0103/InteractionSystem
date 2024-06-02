@@ -23,7 +23,7 @@ namespace HoJin.InteractionSystemEditor
             {
                 EditorGUILayout.HelpBox($"Add any collider at this {nameof(GameObject)}", MessageType.Warning);
             }
-            if (interactionObject.TryGetComponent(out ITargeting targeting) == false)
+            if (interactionObject.TryGetComponent(out Targeting targeting) == false)
             {
                 EditorGUILayout.HelpBox($"Add Targeting component at this {nameof(GameObject)}", MessageType.Warning);
             }

@@ -22,6 +22,45 @@ namespace InteractionSystem
 
 
 
+        public override void SetAsThisTypeState(Selector selector)
+        {
+            if (selector.TryGetComponent(out CharacterMoving characterMoving))
+            {
+                characterMoving.EnableMoving();
+            }
+            else
+            {
+                Debug.LogWarning($"Selector has not {nameof(CharacterMoving)} component");
+            }
+            if (selector.TryGetComponent(out CameraMoving cameraMoving))
+            {
+                cameraMoving.EnableMoving();
+            }
+            else
+            {
+                Debug.LogWarning($"Selector has not {nameof(CameraMoving)} component");
+            }
+
+            EnabledInteractableAndTargetable = false;
+        }
+        private bool EnabledInteractableAndTargetable
+        {
+            set
+            {
+                if (TryGetComponent(out InteractionObject interactionObject))
+                {
+                    interactionObject.Enabled = value;
+                }
+                if (TryGetComponent(out Targeting targeting))
+                {
+                    targeting.Enabled = value;
+                }
+            }
+        }
+        public override void UnsetAsThisTypeState(Selector selector)
+        {
+            EnabledInteractableAndTargetable = true;
+        }
         public override void OnSelect(Selector selector)
         {
             OnSelect(selector.transform);
@@ -118,28 +157,6 @@ namespace InteractionSystem
             }
 
             gameObject.layer = previousLayer;
-        }
-        public override void SetAsThisTypeState(Selector selector)
-        {
-            if (selector.TryGetComponent(out CharacterMoving characterMoving))
-            {
-                characterMoving.EnableMoving();
-            }
-            else
-            {
-                Debug.LogWarning($"Selector has not {nameof(CharacterMoving)} component");
-            }
-            if (selector.TryGetComponent(out CameraMoving cameraMoving))
-            {
-                cameraMoving.EnableMoving();
-            }
-            else
-            {
-                Debug.LogWarning($"Selector has not {nameof(CameraMoving)} component");
-            }
-        }
-        public override void UnsetAsThisTypeState(Selector selector)
-        {
         }
     }
 }

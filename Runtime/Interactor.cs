@@ -107,7 +107,7 @@ namespace InteractionSystem
 
 
         private InteractionObject CurrentTarget { set => currentTarget = value; }
-        private bool IsInteractable { get => HasCurrentTarget && currentTarget.Enabled; }
+        private bool IsInteractable { get => HasCurrentTarget && currentTarget.enabled; }
         private bool HasCurrentTarget { get => currentTarget; }
         private bool IsTargetable(out Targeting targeting)
         {

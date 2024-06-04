@@ -33,7 +33,7 @@ namespace InteractionSystem
             {
                 if (TryGetComponent(out InteractionObject interactionObject))
                 {
-                    interactionObject.Enabled = value;
+                    interactionObject.enabled = value;
                 }
                 if (TryGetComponent(out Targeting targeting))
                 {

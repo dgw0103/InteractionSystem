@@ -6,16 +6,36 @@ namespace InteractionSystem
 {
     public abstract class Targeting : MonoBehaviour
     {
+        private bool isTargeted = false;
+
+
+
         protected void OnDisable()
         {
-            OnReleased();
+            isTargeted = false;
+            SetReleasedState();
         }
 
 
 
-        public abstract void OnTargeted();
-        public abstract void OnReleased();
+        public void OnTargeted()
+        {
+            if (enabled && isTargeted == false)
+            {
+                isTargeted = true;
+                SetTargetedState();
+            }
+        }
+        public void OnReleased()
+        {
+            if (enabled && isTargeted)
+            {
+                isTargeted = false;
+                SetReleasedState();
+            }
+        }
+        protected abstract void SetTargetedState();
+        protected abstract void SetReleasedState();
         public bool Enabled { get => enabled; set => enabled = value; }
-        public abstract bool IsTargeted { get; }
     }
 }

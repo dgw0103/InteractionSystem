@@ -9,8 +9,9 @@ namespace InteractionSystem
     public class Examining : Selection
     {
         [SerializeField] private AudioSource pickUpSound;
-        [SerializeField] private float examiningDistance;
-        [SerializeField] private Vector3 examiningAngle;
+        [SerializeField] private float distanceOffset;
+        [SerializeField] private Vector3 positionOffset;
+        [SerializeField] private Vector3 rotationOffset;
         [SerializeField] private bool isMoveImmediately = false;
         private Coroutine comingCoroutine;
         private Collider[] colliders;
@@ -18,14 +19,13 @@ namespace InteractionSystem
         private Vector3 previousLocalPosition;
         private Quaternion previousLocalRotation;
         private int previousLayer;
-        private readonly float comingSpeed = 5f;
+        private const float comingSpeed = 5f;
 
 
 
-        public override void SetAsThisTypeState(Selector selector)
+        protected override void SetAsThisTypeState(Selector selector)
         {
             EnabledPlayerMoving(selector, false);
-            EnabledInteractableAndTargetable = false;
         }
         private bool EnabledInteractableAndTargetable
         {
@@ -52,12 +52,11 @@ namespace InteractionSystem
                 Debug.LogWarning($"Selector GameObject has not {nameof(IPlayerMoving)} component");
             }
         }
-        public override void UnsetAsThisTypeState(Selector selector)
+        protected override void UnsetAsThisTypeState(Selector selector)
         {
             EnabledPlayerMoving(selector, true);
-            EnabledInteractableAndTargetable = true;
         }
-        public override void OnSelect(Selector selector)
+        protected override void OnSelect(Selector selector)
         {
             OnSelect(selector.transform);
         }
@@ -71,53 +70,30 @@ namespace InteractionSystem
             previousLocalPosition = transform.localPosition;
             previousLocalRotation = transform.localRotation;
 
-            #region move for examining
-            if (isMoveImmediately)
+            #region Moving
+            comingCoroutine = StartCoroutine(Move());
+
+
+
+
+
+            IEnumerator Move()
             {
-                comingCoroutine = StartCoroutine(MoveImmediatelyToPlayer());
-
-
-
-                IEnumerator MoveImmediatelyToPlayer()
+                while (this)
                 {
-                    while (this)
-                    {
-                        transform.position = selector.position + (selector.forward * examiningDistance);
-                        LookAtCamera();
+                    Vector3 targetPosition = selector.position + (selector.forward * distanceOffset) + positionOffset;
 
-                        yield return null;
-                    }
+
+
+                    transform.position = isMoveImmediately ? targetPosition : Vector3.Lerp(transform.position, targetPosition, comingSpeed * Time.deltaTime);
+                    LookAt();
+                    yield return null;
                 }
             }
-            else
-            {
-                comingCoroutine = StartCoroutine(MoveSmoothly());
-
-
-
-                IEnumerator MoveSmoothly()
-                {
-                    while (this)
-                    {
-                        transform.position =
-                            Vector3.Lerp(transform.position, selector.position + (selector.forward * examiningDistance),
-                            comingSpeed * Time.deltaTime);
-                        LookAtCamera();
-                        yield return null;
-                    }
-                }
-            }
-            LookAtCamera();
-
-
-
-
-
-            void LookAtCamera()
+            void LookAt()
             {
                 transform.LookAt((transform.position) + selector.forward, selector.up);
-                Quaternion localRotation = transform.localRotation;
-                transform.localRotation = localRotation * Quaternion.Euler(examiningAngle);
+                transform.localRotation *= Quaternion.Euler(rotationOffset);
             }
             #endregion
 
@@ -133,8 +109,10 @@ namespace InteractionSystem
             }
 
             previousLayer = gameObject.layer;
+
+            EnabledInteractableAndTargetable = false;
         }
-        public override void OnUnselect(Selector selector)
+        protected override void OnUnselect(Selector selector)
         {
             transform.localPosition = previousLocalPosition;
             transform.localRotation = previousLocalRotation;
@@ -153,6 +131,8 @@ namespace InteractionSystem
             }
 
             gameObject.layer = previousLayer;
+
+            EnabledInteractableAndTargetable = true;
         }
     }
 }

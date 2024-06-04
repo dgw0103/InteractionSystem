@@ -13,21 +13,21 @@ namespace InteractionSystem
 
 
 
-        public override void SetAsThisTypeState(Selector selector)
+        protected override void SetAsThisTypeState(Selector selector)
         {
             if (selector.TryGetComponent(out IPlayerMoving playerMoving))
             {
                 playerMoving.Enabled = false;
             }
         }
-        public override void UnsetAsThisTypeState(Selector selector)
+        protected override void UnsetAsThisTypeState(Selector selector)
         {
             if (selector.TryGetComponent(out IPlayerMoving playerMoving))
             {
                 playerMoving.Enabled = true;
             }
         }
-        public override void OnSelect(Selector selector)
+        protected override void OnSelect(Selector selector)
         {
             if (selector.TryGetComponent(out IPlayerMoving playerMoving))
             {
@@ -40,7 +40,7 @@ namespace InteractionSystem
                 Debug.LogWarning($"Selector GameObject has not {nameof(IPlayerMoving)} component");
             }
         }
-        public override void OnUnselect(Selector selector)
+        protected override void OnUnselect(Selector selector)
         {
             if (selector.TryGetComponent(out IPlayerMoving playerMoving))
             {

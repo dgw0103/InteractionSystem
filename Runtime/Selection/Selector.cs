@@ -16,6 +16,18 @@ namespace InteractionSystem
         private void Awake()
         {
             selectionInput.Init(Unselect);
+
+
+
+
+
+            void Unselect()
+            {
+                if (TryGetRecentSelection(out Selection selection))
+                {
+                    this.Unselect(selection);
+                }
+            }
         }
         private void OnEnable()
         {
@@ -24,60 +36,37 @@ namespace InteractionSystem
         private void OnDisable()
         {
             selectionInput.DisableUnselectionAction();
+            while (currentSelections.TryPeek(out Selection selection) && selection)
+            {
+                UnselectForce(selection);
+            }
         }
 
 
 
         public void Select(Selection selection)
         {
-            if (currentSelections.TryPeek(out Selection last))
+            if (enabled)
             {
-                if (last.GetType().Equals(GetType()) == false)
-                {
-                    last.UnsetAsThisTypeState(this);
-                    selection.SetAsThisTypeState(this);
-                }
+                selection.Select(this);
+                currentSelections.Push(selection);
             }
-            else
-            {
-                selection.SetAsThisTypeState(this);
-                EnableUnselectionAction();
-            }
-            currentSelections.Push(selection);
-            selection.OnSelect(this);
         }
         public void Unselect(Selection selection)
         {
-            selection.OnUnselect(this);
+            if (enabled)
+            {
+                UnselectForce(selection);
+            }
+        }
+        private void UnselectForce(Selection selection)
+        {
             currentSelections.Pop();
-            if (currentSelections.TryPeek(out Selection last))
-            {
-                if (last.GetType().Equals(GetType()) == false)
-                {
-                    selection.UnsetAsThisTypeState(this);
-                    last.SetAsThisTypeState(this);
-                }
-            }
-            else
-            {
-                selection.UnsetAsThisTypeState(this);
-                DisableUnselectionAction();
-            }
+            selection.Unselect(this);
         }
-        private void Unselect()
+        internal bool TryGetRecentSelection(out Selection selection)
         {
-            if (currentSelections.TryPeek(out Selection selection))
-            {
-                Unselect(selection);
-            }
-        }
-        private void EnableUnselectionAction()
-        {
-            selectionInput.EnableUnselectionAction();
-        }
-        private void DisableUnselectionAction()
-        {
-            selectionInput.DisableUnselectionAction();
+            return currentSelections.TryPeek(out selection);
         }
     }
 }

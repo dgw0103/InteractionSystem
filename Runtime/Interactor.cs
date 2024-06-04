@@ -70,19 +70,16 @@ namespace InteractionSystem
             {
                 if (target.Equals(currentTarget) == false)
                 {
-                    TryNoLookAt();
+                    OnRelease();
                     CurrentTarget = target;
-                    OnTarget();
                 }
-            }
-            else if (HasCurrentTarget == false)
-            {
-                CurrentTarget = null;
+                OnTarget();
             }
             else
             {
-                if (TryNoLookAt())
+                if (HasCurrentTarget)
                 {
+                    OnRelease();
                     CurrentTarget = null;
                 }
             }
@@ -99,23 +96,12 @@ namespace InteractionSystem
             {
                 return (interactionLayerMask | LayerMask.GetMask(LayerMask.LayerToName(hit.collider.gameObject.layer))).Equals(interactionLayerMask);
             }
-            bool TryNoLookAt()
-            {
-                if (IsTargetable(out Targeting targeting))
-                {
-                    targeting.OnReleased();
-                    return true;
-                }
-                else
-                {
-                    return false;
-                }
-            }
             #endregion
         }
         private void OnDisable()
         {
             interactionInput.DisableInteractionAction();
+            CurrentTarget = null;
         }
 
 

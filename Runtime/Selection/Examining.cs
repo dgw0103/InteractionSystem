@@ -83,8 +83,6 @@ namespace InteractionSystem
                 {
                     Vector3 targetPosition = selector.position + (selector.forward * distanceOffset) + positionOffset;
 
-
-
                     transform.position = isMoveImmediately ? targetPosition : Vector3.Lerp(transform.position, targetPosition, comingSpeed * Time.deltaTime);
                     LookAt();
                     yield return null;

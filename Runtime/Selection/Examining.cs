@@ -132,5 +132,7 @@ namespace InteractionSystem
 
             EnabledInteractableAndTargetable = true;
         }
+        internal protected float DistanceOffset { get => distanceOffset; set => distanceOffset = value; }
+        internal protected Quaternion RotationOffset { get => Quaternion.Euler(rotationOffset); set => rotationOffset = value.eulerAngles; }
     }
 }

@@ -1,12 +1,8 @@
 {
-    "name": "HoJin.SerializableDictionaryEditor",
-    "rootNamespace": "HoJin.SerializableDictionaryEditor",
-    "references": [
-        "GUID:4ec79cc9a3f8e1f4a83d00f780b7241d"
-    ],
-    "includePlatforms": [
-        "Editor"
-    ],
+    "name": "UnityUtility",
+    "rootNamespace": "UnityUtility",
+    "references": [],
+    "includePlatforms": [],
     "excludePlatforms": [],
     "allowUnsafeCode": false,
     "overrideReferences": false,

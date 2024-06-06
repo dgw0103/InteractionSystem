@@ -1,6 +1,6 @@
 {
-    "name": "HoJin.SerializableDictionary",
-    "rootNamespace": "HoJin.SerializableDictionary",
+    "name": "SerializableDictionary",
+    "rootNamespace": "SerializableDictionary",
     "references": [],
     "includePlatforms": [],
     "excludePlatforms": [],

@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Runtime.Serialization;
 using UnityEngine;
 
-namespace HoJin.SerializableDictionary
+namespace SerializableDictionary
 {
 	public abstract class SerializableDictionaryBase
 	{

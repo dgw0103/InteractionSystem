@@ -1,12 +1,12 @@
 {
-    "name": "InteractionSystem",
-    "rootNamespace": "InteractionSystem",
+    "name": "SerializableDictionaryEditor",
+    "rootNamespace": "SerializableDictionaryEditor",
     "references": [
-        "GUID:75469ad4d38634e559750d17036d5f7c",
-        "GUID:4ec79cc9a3f8e1f4a83d00f780b7241d",
-        "GUID:a4c97f5e01f64d44782a1263cb09d03a"
+        "GUID:4ec79cc9a3f8e1f4a83d00f780b7241d"
     ],
-    "includePlatforms": [],
+    "includePlatforms": [
+        "Editor"
+    ],
     "excludePlatforms": [],
     "allowUnsafeCode": false,
     "overrideReferences": false,

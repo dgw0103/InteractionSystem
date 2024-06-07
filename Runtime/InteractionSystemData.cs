@@ -3,13 +3,19 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Rendering;
+using System;
+using UnityEngine.Serialization;
 
 namespace InteractionSystem
 {
-    [CreateAssetMenu(fileName = nameof(InteractionSystemData), menuName = "InteractionSystem/" + nameof(InteractionSystemData))]
+    [Serializable]
     public class InteractionSystemData : ScriptableObject
     {
-        public LayerMask interactionLayerMask;
-        public LayerMask blockingLayerMask;
+        [SerializeField, FormerlySerializedAs(nameof(interactionLayerMask))] private LayerMask interactionLayerMaskField;
+        [SerializeField, FormerlySerializedAs(nameof(blockingLayerMask))] private LayerMask blockingLayerMaskField;
+        [SerializeField, FormerlySerializedAs(nameof(inputActionReference))] private InputActionReference inputActionReferenceField;
+        public static LayerMask interactionLayerMask;
+        public static LayerMask blockingLayerMask;
+        public static InputActionReference inputActionReference;
     }
 }

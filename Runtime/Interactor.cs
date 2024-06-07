@@ -10,7 +10,6 @@ namespace InteractionSystem
     {
         [SerializeField] private Transform rayShooter;
         [SerializeField] private InteractionInput interactionInput;
-        [SerializeField] private InteractionSystemData interactionSystemData;
         [SerializeField] private float maxDistance = 1.5f;
         private InteractionObject currentTarget = null;
         public event Action<InteractionObject> OnInteraction;
@@ -61,8 +60,8 @@ namespace InteractionSystem
         private void Update()
         {
             #region update target
-            LayerMask interactionLayerMask = interactionSystemData.interactionLayerMask;
-            LayerMask blockingLayerMask = interactionSystemData.blockingLayerMask;
+            LayerMask interactionLayerMask = InteractionSystemData.interactionLayerMask;
+            LayerMask blockingLayerMask = InteractionSystemData.blockingLayerMask;
 
 
 

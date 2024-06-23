@@ -8,6 +8,7 @@ namespace InteractionSystem
     [AddComponentMenu(nameof(InteractionSystem) + "/" + nameof(Interactor))]
     public class Interactor : MonoBehaviour
     {
+        [SerializeField] private InteractionSystemData interactionSystemData;
         [SerializeField] private Transform rayShooter;
         [SerializeField] private InteractionInput interactionInput;
         [SerializeField] private float maxDistance = 1.5f;
@@ -18,7 +19,7 @@ namespace InteractionSystem
 
         private void Awake()
         {
-            interactionInput.Init(OnStarted, OnPerformed, OnCanceled);
+            interactionInput = new InteractionInput(interactionSystemData.InputActionReference, OnStarted, OnPerformed, OnCanceled);
             interactionInput.EnableInteractionAction();
             
 
@@ -60,8 +61,8 @@ namespace InteractionSystem
         private void Update()
         {
             #region update target
-            LayerMask interactionLayerMask = InteractionSystemData.interactionLayerMask;
-            LayerMask blockingLayerMask = InteractionSystemData.blockingLayerMask;
+            LayerMask interactionLayerMask = interactionSystemData.InteractionLayerMask;
+            LayerMask blockingLayerMask = interactionSystemData.BlockingLayerMask;
 
 
 

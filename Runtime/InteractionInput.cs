@@ -4,15 +4,13 @@ using UnityEngine.InputSystem;
 
 namespace InteractionSystem
 {
-    [Serializable]
     public class InteractionInput
     {
-        [SerializeField] private InputActionReference interactionActionReference;
         private InputAction interactionAction;
 
 
 
-        public void Init(Action onStarted, Action onPerformed, Action onCanceled)
+        public InteractionInput(InputActionReference interactionActionReference, Action onStarted, Action onPerformed, Action onCanceled)
         {
             interactionAction = interactionActionReference.action.Clone();
             interactionAction.started += (x) => onStarted?.Invoke();

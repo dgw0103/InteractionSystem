@@ -5,7 +5,15 @@
 <br>DetailedExamining 입력 부분 캡슐화
 
 # Interaction system
-Help that user can directly make objects to interact with player. Some basic things and examples are included.
+Help that user can directly make objects to interact with player. Also, some samples using interaction system is included.<br><br>
+The things you can do with this module is following...<br>
+><b>1. Create Interaction object.</b><br>
+><b>2. Can use the UI's 'Navigation' function to non-UI GameObject.</b><br>
+
+<br>Samples using interaction system is following...<br>
+><b>1. Look at closer a object by interaction.</b><br>
+><b>2. Rotate or zoom in/out the object after you interact by the function at '2.'.</b><br>
+><b>3. Can move camera to the position you want.</b>
 
 - [How to use](#how-to-use)
   - [Make any interaction object](#make-any-interaction-object)

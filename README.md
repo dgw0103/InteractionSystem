@@ -6,7 +6,12 @@
 
 # Interaction system
 Help that user can directly make objects to interact with player. Also, some samples using interaction system is included.<br><br>
-![image](https://github.com/dgw0103/InteractionSystem/assets/68366554/8abe997a-3efd-46a5-ad00-ce9ad5bc6000)<br><br>
+![image](https://github.com/dgw0103/InteractionSystem/assets/68366554/8abe997a-3efd-46a5-ad00-ce9ad5bc6000)<br>
+↑ Interaction system simple relationship image<br><br>
+
+![image](https://github.com/dgw0103/InteractionSystem/assets/68366554/9e040ec5-5be4-4438-b0b8-7a382bd7a818)<br>
+↑ Object navigation simple relationship image<br><br>
+
 
 ## The things you can do with this module is following...<br>
 ><b>1. Create Interaction object.</b><br>
@@ -22,25 +27,25 @@ Help that user can directly make objects to interact with player. Also, some sam
 ><b>3. Move camera to the position you want.</b><br>
 <img src="https://github.com/dgw0103/InteractionSystem/assets/68366554/f04bbfca-d136-4a6e-8cf4-770435b78476" width="485" height="300"/><br><br>
 
-# Apply this package to your unity project
+## Apply this package to your unity project
 1. Copy this url.
 2. Open the Package Manager window in Unity.
 3. Click plus icon in left up.
 4. Paste git url
 5. Download and import.
 
-# Make custom interaction object
-## Simple interactable object
+## Make custom interaction object
+### Simple interactable object
 1. Create a script as component for interaction object that you want to make.
 2. The script inherits from the 'InteractionObject'.
 3. Implement abstract functions.
 4. Add the component to GameObject to use.
 5. If you want to get the GameObject light emission when the interactor is close with interaction object enough to interact, add the 'LightEmission' component too.
 
-## Create the '~Data'
+### Create the '~Data'
 This is ScriptableObject type object. You can create this by right-click in the Project window. (It is at upside.)
 
-# About the 'Selector'.
+## About the 'Selector'.
 You can want to focus a GameObject by interaction such as [Samples using interaction system is following...](#Samples-using-interaction-system-is-following).<br>
 And, the case you want to interact again to another after interact to a GameObject can be occurred.<br><br>
 

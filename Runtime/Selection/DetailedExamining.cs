@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using System;
 
 namespace InteractionSystem
 {
@@ -19,6 +20,8 @@ namespace InteractionSystem
         private Transform selector;
         private float originalDistanceOffset;
         private Quaternion originalRotationOffset;
+        public event Action<Vector2> OnRotate;
+        public event Action<float> OnZoomInOut;
 
 
 
@@ -71,6 +74,8 @@ namespace InteractionSystem
 
             RotationOffset *= Quaternion.AngleAxis(-rotationValue.x, Quaternion.Inverse(transform.rotation) * selector.up);
             RotationOffset *= Quaternion.AngleAxis(rotationValue.y, Quaternion.Inverse(transform.rotation) * selector.right);
+
+            OnRotate?.Invoke(value);
         }
         private void ZoomInZoomOut(InputAction.CallbackContext callbackContext)
         {
@@ -86,6 +91,8 @@ namespace InteractionSystem
             if (afterValue >= minDistance && afterValue <= maxDistance)
             {
                 DistanceOffset += scrollDirection;
+
+                OnZoomInOut?.Invoke(value);
             }
         }
     }

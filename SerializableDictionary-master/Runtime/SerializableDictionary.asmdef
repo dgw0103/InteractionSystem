@@ -1,6 +1,6 @@
 {
-    "name": "SerializableDictionary",
-    "rootNamespace": "SerializableDictionary",
+    "name": "InteractionSystem.SerializableDictionary",
+    "rootNamespace": "InteractionSystem.SerializableDictionary",
     "references": [],
     "includePlatforms": [],
     "excludePlatforms": [],

@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Runtime.Serialization;
 using UnityEngine;
 
-namespace SerializableDictionary
+namespace InteractionSystem.SerializableDictionary
 {
 	public abstract class SerializableDictionaryBase
 	{

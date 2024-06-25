@@ -4,9 +4,9 @@ using UnityEngine;
 using UnityEditor;
 using System.Reflection;
 using System;
-using SerializableDictionary;
+using InteractionSystem.SerializableDictionary;
 
-namespace SerializableDictionaryEditor
+namespace InteractionSystem.SerializableDictionaryEditor
 {
 	[CustomPropertyDrawer(typeof(SerializableDictionaryBase), true)]
 #if NET_4_6 || NET_STANDARD_2_0

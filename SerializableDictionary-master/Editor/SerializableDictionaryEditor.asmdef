@@ -1,6 +1,6 @@
 {
-    "name": "SerializableDictionaryEditor",
-    "rootNamespace": "SerializableDictionaryEditor",
+    "name": "InteractionSystem.SerializableDictionaryEditor",
+    "rootNamespace": "InteractionSystem.SerializableDictionaryEditor",
     "references": [
         "GUID:4ec79cc9a3f8e1f4a83d00f780b7241d"
     ],

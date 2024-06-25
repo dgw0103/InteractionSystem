@@ -43,7 +43,7 @@ namespace InteractionSystem
         }
         private void EnabledPlayerMoving(Selector selector, bool value)
         {
-            if (selector.TryGetComponent(out IPlayerMoving playerMoving))
+            if (selector && selector.TryGetComponent(out IPlayerMoving playerMoving))
             {
                 playerMoving.Enabled = value;
             }

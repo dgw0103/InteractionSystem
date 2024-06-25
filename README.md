@@ -8,7 +8,7 @@
 Help that user can directly make objects to interact with player. Also, some samples using interaction system is included.<br><br>
 The things you can do with this module is following...<br>
 ><b>1. Create Interaction object.</b><br>
-<img src="https://github.com/dgw0103/InteractionSystem/assets/68366554/dba2dbc0-3790-4242-8c86-b34d4c0b0232" width="485" height="300"/><br>
+<img src="https://github.com/dgw0103/InteractionSystem/assets/68366554/dba2dbc0-3790-4242-8c86-b34d4c0b0232" width="485" height="300"/><br><br>
 ><b>2. Can use the UI's 'Navigation' function to non-UI GameObject.</b><br>
 <img src="https://github.com/dgw0103/InteractionSystem/assets/68366554/b0e33ac7-a8ab-4dbc-abf2-66e2fa0e5907" width="485" height="300"/><br>
 

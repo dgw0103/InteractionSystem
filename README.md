@@ -41,7 +41,15 @@ Help that user can directly make objects to interact with player. Also, some sam
 This is ScriptableObject type object. You can create this by right-click in the Project window. (It is at upside.)
 
 # About the 'Selector'.
-You can want to focus a GameObject by interaction such as [Samples using interaction system is following...](#Samples-using-interaction-system-is-following).The case you want to interact again to another after interact a GameObject can be occurred.
+You can want to focus a GameObject by interaction such as [Samples using interaction system is following...](#Samples-using-interaction-system-is-following).<br>
+And, the case you want to interact again to another after interact to a GameObject can be occurred.<br><br>
+
+'Selector' is about this part.<br><br>
+
+Let's say you interact to this 'A', 'B' two objects.<br>
+If you select sequently to 'A', 'B' by 'Examining', you are focusing to 'B'.<br>
+And then, if you unselect once, you are focusing to 'A', and the unselect once makes no focus to anyone.<br>
+In case 'A', 'B', 'C', if the interaction order is 'A' -> 'B' -> 'C', the unselection order will be 'C' -> 'B' -> 'A'.<br><br>
 
 # License
 MIT License

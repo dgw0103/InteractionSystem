@@ -14,7 +14,7 @@ Help that user can directly make objects to interact with player. Also, some sam
 ><b>2. Can use the UI's 'Navigation' function to non-UI GameObject.</b><br>
 <img src="https://github.com/dgw0103/InteractionSystem/assets/68366554/b0e33ac7-a8ab-4dbc-abf2-66e2fa0e5907" width="485" height="300"/><br>
 
-## [Samples using interaction system is following...]<br>Samples using interaction system is following...<br>
+## <br>Samples using interaction system is following...<br>
 ><b>1. Look at closer a object by interaction.</b><br>
 <img src="https://github.com/dgw0103/InteractionSystem/assets/68366554/a36b3258-d57c-465d-ac7a-5b4c742909dc" width="485" height="300"/><br><br>
 ><b>2. Rotate or zoom in/out the object after you interact by the function at '2.'.</b><br>
@@ -41,7 +41,7 @@ Help that user can directly make objects to interact with player. Also, some sam
 This is ScriptableObject type object. You can create this by right-click in the Project window. (It is at upside.)
 
 # About the 'Selector'.
-You can want to focus a GameObject by interaction such as [Samples using interaction system is following...](#samples-using-interaction-system-is-following...).The case you want to interact again to another after interact a GameObject can be occurred.
+You can want to focus a GameObject by interaction such as [Samples using interaction system is following...](##samples-using-interaction-system-is-following...).The case you want to interact again to another after interact a GameObject can be occurred.
 
 # License
 MIT License

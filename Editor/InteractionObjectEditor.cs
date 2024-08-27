@@ -2,7 +2,7 @@ using UnityEditor;
 using UnityEngine;
 using InteractionSystem;
 
-namespace HoJin.InteractionSystemEditor
+namespace InteractionSystemEditor
 {
     [CustomEditor(typeof(InteractionObject), true)]
     [CanEditMultipleObjects]

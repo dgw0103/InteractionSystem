@@ -1,9 +1,5 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
 
-<b>TODO</b>
-<br>글로벌 데이터들 에디터 창에서 수정할 수 있는 기능 만들기.
-<br>DetailedExamining 입력 부분 캡슐화
-
 # Interaction system
 Help that user can directly make objects to interact with player. Also, some samples using interaction system is included.<br><br>
 ![image](https://github.com/dgw0103/InteractionSystem/assets/68366554/8abe997a-3efd-46a5-ad00-ce9ad5bc6000)<br>

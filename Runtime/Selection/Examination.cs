@@ -23,10 +23,6 @@ namespace InteractionSystem
 
 
 
-        protected override void SetAsThisTypeState(Selector selector)
-        {
-            EnabledPlayerMoving(selector, false);
-        }
         private bool EnabledInteractableAndTargetable
         {
             set
@@ -41,26 +37,7 @@ namespace InteractionSystem
                 }
             }
         }
-        private void EnabledPlayerMoving(Selector selector, bool value)
-        {
-            if (selector && selector.TryGetComponent(out IPlayerMoving playerMoving))
-            {
-                playerMoving.Enabled = value;
-            }
-            else
-            {
-                Debug.LogWarning($"Selector GameObject has not {nameof(IPlayerMoving)} component");
-            }
-        }
-        protected override void UnsetAsThisTypeState(Selector selector)
-        {
-            EnabledPlayerMoving(selector, true);
-        }
-        protected override void OnSelect(Selector selector)
-        {
-            OnSelect(selector.transform);
-        }
-        private void OnSelect(Transform selector)
+        protected override void OnPostSelected()
         {
             if (pickUpSound)
             {
@@ -71,6 +48,7 @@ namespace InteractionSystem
             previousLocalRotation = transform.localRotation;
 
             #region Moving
+            Transform selector = Selector.transform;
             comingCoroutine = StartCoroutine(Move());
 
 
@@ -110,7 +88,7 @@ namespace InteractionSystem
 
             EnabledInteractableAndTargetable = false;
         }
-        protected override void OnUnselect(Selector selector)
+        protected override void OnPostUnselected()
         {
             transform.localPosition = previousLocalPosition;
             transform.localRotation = previousLocalRotation;

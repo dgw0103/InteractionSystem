@@ -23,7 +23,7 @@ namespace InteractionSystem
 
             void Unselect()
             {
-                if (TryGetRecentSelection(out Selection selection))
+                if (currentSelections.TryPeek(out Selection selection))
                 {
                     this.Unselect(selection);
                 }
@@ -48,8 +48,14 @@ namespace InteractionSystem
         {
             if (enabled)
             {
-                selection.Select(this);
+                selection.OnPreSelectedForSelector(this);
+                if (currentSelections.Count == 0)
+                {
+                    selectionInput.EnableAction();
+                    EnabledPlayerMoving = false;
+                }
                 currentSelections.Push(selection);
+                selection.OnPostSelectedForSelector();
             }
         }
         public void Unselect(Selection selection)
@@ -61,12 +67,39 @@ namespace InteractionSystem
         }
         private void UnselectForce(Selection selection)
         {
+            selection.OnPreUnselectedForSelector();
             currentSelections.Pop();
-            selection.Unselect(this);
+            if (currentSelections.Count == 0)
+            {
+                selectionInput.DisableAction();
+                EnabledPlayerMoving = true;
+            }
+            selection.OnPostUnselectedForSelector();
         }
-        internal bool TryGetRecentSelection(out Selection selection)
+        public Selection LatestSelection
         {
-            return currentSelections.TryPeek(out selection);
+            get
+            {
+                Selection selection = null;
+
+                currentSelections.TryPeek(out selection);
+
+                return selection;
+            }
+        }
+        private bool EnabledPlayerMoving
+        {
+            set
+            {
+                if (TryGetComponent(out IPlayerMoving playerMoving))
+                {
+                    playerMoving.Enabled = value;
+                }
+                else
+                {
+                    Debug.LogWarning($"Selector GameObject has not {nameof(IPlayerMoving)} component");
+                }
+            }
         }
     }
 }

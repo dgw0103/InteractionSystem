@@ -8,66 +8,59 @@ namespace InteractionSystem
 {
     public abstract class Selection : MonoBehaviour
     {
-        private Action onDisable;
+        private Selector selector;
+        public event Action onPreSelected;
+        public event Action onPostSelected;
+        public event Action onPreUnselected;
+        public event Action onPostUnselected;
 
 
 
         protected void OnDestroy()
         {
-            onDisable?.Invoke();
+            OnPostUnselected();
         }
 
 
 
-        internal void Select(Selector selector)
+        internal void OnPreSelectedForSelector(Selector selector)
         {
-            if (selector.TryGetRecentSelection(out Selection recentSelection))
-            {
-                if (recentSelection.GetType().Equals(GetType()) == false)
-                {
-                    recentSelection.UnsetAsThisTypeState(selector);
-                    SetAsThisTypeState(selector);
-                }
-            }
-            else
-            {
-                SetAsThisTypeState(selector);
-                selector.enabled = true;
-            }
-
-            OnSelect(selector);
-            onDisable = Unselect;
-
-
-
-
-
-            void Unselect()
-            {
-                this.Unselect(selector);
-            }
+            this.selector = selector;
+            OnPreSelected();
+            onPreSelected?.Invoke();
         }
-        internal void Unselect(Selector selector)
+        internal void OnPostSelectedForSelector()
         {
-            OnUnselect(selector);
-            onDisable = null;
-
-            if (selector.TryGetRecentSelection(out Selection recentSelection))
-            {
-                if (recentSelection.GetType().Equals(GetType()) == false)
-                {
-                    UnsetAsThisTypeState(selector);
-                    recentSelection.SetAsThisTypeState(selector);
-                }
-            }
-            else
-            {
-                UnsetAsThisTypeState(selector);
-            }
+            OnPostSelected();
+            onPostSelected?.Invoke();
         }
-        protected abstract void SetAsThisTypeState(Selector selector);
-        protected abstract void UnsetAsThisTypeState(Selector selector);
-        protected abstract void OnSelect(Selector selector);
-        protected abstract void OnUnselect(Selector selector);
+        internal void OnPreUnselectedForSelector()
+        {
+            OnPreUnselected();
+            onPreUnselected?.Invoke();
+        }
+        internal void OnPostUnselectedForSelector()
+        {
+            OnPostUnselected();
+            onPostUnselected?.Invoke();
+            selector = null;
+        }
+        protected virtual void OnPreSelected()
+        {
+
+        }
+        protected virtual void OnPostSelected()
+        {
+
+        }
+        protected virtual void OnPreUnselected()
+        {
+
+        }
+        protected virtual void OnPostUnselected()
+        {
+
+        }
+        protected Selector Selector { get => selector; }
     }
 }

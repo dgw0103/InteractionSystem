@@ -10,7 +10,6 @@ namespace InteractionSystem
         [SerializeField] private float minDistance;
         [SerializeField] private float maxDistance;
         private DetailedExaminationInput detailedExaminationInput;
-        private Transform selector;
         private float originalDistanceOffset;
         private Quaternion originalRotationOffset;
         public event Action<Vector2> OnRotate;
@@ -25,33 +24,38 @@ namespace InteractionSystem
 
 
 
-        protected override void OnSelect(Selector selector)
+        protected override void OnPreSelected()
         {
-            base.OnSelect(selector);
+            base.OnPreSelected();
 
-            if (selector.TryGetRecentSelection(out Selection selection) && selection is DetailedExamination)
+            Selection latestSelection = Selector?.LatestSelection;
+            if (latestSelection && latestSelection is DetailedExamination)
             {
-                (selection as DetailedExamination).detailedExaminationInput.DisableAction();
+                (latestSelection as DetailedExamination).detailedExaminationInput.DisableAction();
             }
+
+
 
             originalDistanceOffset = DistanceOffset;
             originalRotationOffset = RotationOffset;
-            this.selector = selector.transform;
 
             detailedExaminationInput.EnableAction();
         }
-        protected override void OnUnselect(Selector selector)
+        protected override void OnPostUnselected()
         {
-            base.OnUnselect(selector);
+            base.OnPostUnselected();
 
-            if (selector.TryGetRecentSelection(out Selection selection) && selection is DetailedExamination)
+            Selection latestSelection = Selector?.LatestSelection;
+            if (latestSelection && latestSelection is DetailedExamination)
             {
-                (selection as DetailedExamination).detailedExaminationInput.EnableAction();
+                (latestSelection as DetailedExamination).detailedExaminationInput.EnableAction();
             }
+
+
+
 
             DistanceOffset = originalDistanceOffset;
             RotationOffset = originalRotationOffset;
-            this.selector = null;
 
             detailedExaminationInput.DisableAction();
         }
@@ -66,8 +70,8 @@ namespace InteractionSystem
 
             Vector2 rotationValue = InteractionSystemGlobalData.DetailedExaminationDataInstance.RotationSpeed * value;
 
-            RotationOffset *= Quaternion.AngleAxis(-rotationValue.x, Quaternion.Inverse(transform.rotation) * selector.up);
-            RotationOffset *= Quaternion.AngleAxis(rotationValue.y, Quaternion.Inverse(transform.rotation) * selector.right);
+            RotationOffset *= Quaternion.AngleAxis(-rotationValue.x, Quaternion.Inverse(transform.rotation) * Selector.transform.up);
+            RotationOffset *= Quaternion.AngleAxis(rotationValue.y, Quaternion.Inverse(transform.rotation) * Selector.transform.right);
 
             OnRotate?.Invoke(value);
         }

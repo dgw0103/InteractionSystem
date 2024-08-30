@@ -24,8 +24,6 @@ Help that user can directly make objects to interact with player. Also, some sam
 <img src="https://github.com/dgw0103/InteractionSystem/assets/68366554/a36b3258-d57c-465d-ac7a-5b4c742909dc" width="485" height="300"/><br><br>
 ><b>2. Rotate or zoom in/out the object after you interact by the function at '2.'.</b><br>
 <img src="https://github.com/dgw0103/InteractionSystem/assets/68366554/1b4cc7d5-f753-4175-a2b6-6f50ad7bce9d" width="485" height="300"/><br><br>
-><b>3. Move camera to the position you want.</b><br>
-<img src="https://github.com/dgw0103/InteractionSystem/assets/68366554/f04bbfca-d136-4a6e-8cf4-770435b78476" width="485" height="300"/><br><br>
 
 ## Apply this package to your unity project
 1. Copy this url.
@@ -41,9 +39,6 @@ Help that user can directly make objects to interact with player. Also, some sam
 3. Implement abstract functions.
 4. Add the component to GameObject to use.
 5. If you want to get the GameObject light emission when the interactor is close with interaction object enough to interact, add the 'LightEmission' component too.
-
-### Create the '~Data'
-This is ScriptableObject type object. You can create this by right-click in the Project window. (It is at upside.)
 
 ## About the 'Selector'.
 You can want to focus a GameObject by interaction such as [Samples using interaction system is following...](#Samples-using-interaction-system-is-following).<br>

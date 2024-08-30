@@ -8,10 +8,7 @@ namespace InteractionSystem
 {
     public class InteractionSystemGlobalData : MonoBehaviour
     {
-        [SerializeField] private InteractionSystemData interactionSystemData;
-        [SerializeField] private LightEmissionData lightEmissionData;
-        [SerializeField] private SelectionData selectionData;
-        [SerializeField] private DetailedExaminationData detailedExaminationData;
+        [SerializeField] private InteractionSystemGlobalDataAsset interactionSystemGlobalDataAsset;
         private static InteractionSystemGlobalData instance;
 
 
@@ -31,10 +28,10 @@ namespace InteractionSystem
 
 
 
-        public static InteractionSystemData InteractionSystemDataInstance { get => instance?.interactionSystemData; }
-        public static LightEmissionData LightEmissionDataInstance { get => instance?.lightEmissionData; }
-        public static SelectionData SelectionDataInstance { get => instance?.selectionData; }
-        public static DetailedExaminationData DetailedExaminationDataInstance { get => instance?.detailedExaminationData; }
+        public static InteractionSystemData InteractionSystemDataInstance { get => instance?.interactionSystemGlobalDataAsset?.InteractionSystemData; }
+        public static LightEmissionData LightEmissionDataInstance { get => instance?.interactionSystemGlobalDataAsset?.LightEmissionData; }
+        public static SelectionData SelectionDataInstance { get => instance?.interactionSystemGlobalDataAsset?.SelectionData; }
+        public static DetailedExaminationData DetailedExaminationDataInstance { get => instance?.interactionSystemGlobalDataAsset?.DetailedExaminationData; }
 
 
 

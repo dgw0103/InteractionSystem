@@ -44,26 +44,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c47238d4aa6d09b46891088bc9d66ad9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  interactionSystemData:
-    interactionLayerMask:
-      serializedVersion: 2
-      m_Bits: 256
-    blockingLayerMask:
-      serializedVersion: 2
-      m_Bits: 512
-    inputActionReference: {fileID: 1571034054845480388, guid: 48ced473778942a4cbb0719a6fe7d61d,
-      type: 3}
-  lightEmissionData:
-    emissionColor: {r: 1, g: 1, b: 1, a: 1}
-    emissionColorKeyword: _EmissionColor
-  selectionData:
-    unselectionActionReference: {fileID: -4249837471923587462, guid: 48ced473778942a4cbb0719a6fe7d61d,
-      type: 3}
-  detailedExaminationData:
-    rotationSpeed: 1
-    rotationActivationActionReference: {fileID: 1571034054845480388, guid: 48ced473778942a4cbb0719a6fe7d61d,
-      type: 3}
-    rotationActionReference: {fileID: 2274249244383590443, guid: 48ced473778942a4cbb0719a6fe7d61d,
-      type: 3}
-    zoomInZoomOutActionReference: {fileID: -5182634143756145090, guid: 48ced473778942a4cbb0719a6fe7d61d,
-      type: 3}
+  interactionSystemGlobalDataAsset: {fileID: 11400000, guid: d8a5e03a322721341992365a9c672bb9,
+    type: 2}

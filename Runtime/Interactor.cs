@@ -8,19 +8,17 @@ namespace InteractionSystem
     [AddComponentMenu(nameof(InteractionSystem) + "/" + nameof(Interactor))]
     public class Interactor : MonoBehaviour
     {
-        [SerializeField] private InteractionSystemData interactionSystemData;
         [SerializeField] private Transform rayShooter;
-        [SerializeField] private InteractionInput interactionInput;
         [SerializeField] private float maxDistance = 1.5f;
+        private InteractionInput interactionInput;
         private InteractionObject currentTarget = null;
-        public event Action<InteractionObject> OnInteraction;
 
 
 
         private void Awake()
         {
-            interactionInput = new InteractionInput(interactionSystemData.InputActionReference, OnStarted, OnPerformed, OnCanceled);
-            interactionInput.EnableInteractionAction();
+            interactionInput = new InteractionInput(OnStarted, OnPerformed, OnCanceled);
+            interactionInput.EnableAction();
             
 
 
@@ -38,7 +36,6 @@ namespace InteractionSystem
                 if (IsInteractable)
                 {
                     currentTarget.OnInteractionPerformed(this);
-                    OnInteraction?.Invoke(currentTarget);
                 }
             }
             void OnCanceled()
@@ -56,11 +53,12 @@ namespace InteractionSystem
                 OnRelease();
                 CurrentTarget = null;
             }
-            interactionInput.EnableInteractionAction();
+            interactionInput.EnableAction();
         }
         private void Update()
         {
             #region update target
+            InteractionSystemGlobalData.InteractionSystemData interactionSystemData = InteractionSystemGlobalData.InteractionSystemDataInstance;
             LayerMask interactionLayerMask = interactionSystemData.InteractionLayerMask;
             LayerMask blockingLayerMask = interactionSystemData.BlockingLayerMask;
 
@@ -100,7 +98,7 @@ namespace InteractionSystem
         }
         private void OnDisable()
         {
-            interactionInput.DisableInteractionAction();
+            interactionInput.DisableAction();
             CurrentTarget = null;
         }
 

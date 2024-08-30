@@ -1,22 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem;
 using System;
 
 namespace InteractionSystem
 {
-    public class DetailedExamining : Examining
+    public class DetailedExamination : Examination
     {
-        [SerializeField] private float rotationSpeed = 1f;
         [SerializeField] private float minDistance;
         [SerializeField] private float maxDistance;
-        [SerializeField] private InputActionReference rotationActivationActionReference;
-        [SerializeField] private InputActionReference rotationActionReference;
-        [SerializeField] private InputActionReference zoomInZoomOutActionReference;
-        private InputAction rotationActivationAction;
-        private InputAction rotationAction;
-        private InputAction zoomInZoomOutAction;
+        private DetailedExaminationInput detailedExaminationInput;
         private Transform selector;
         private float originalDistanceOffset;
         private Quaternion originalRotationOffset;
@@ -27,12 +20,7 @@ namespace InteractionSystem
 
         private void Awake()
         {
-            rotationActivationAction = rotationActivationActionReference.action.Clone();
-            rotationAction = rotationActionReference.action.Clone();
-            zoomInZoomOutAction = zoomInZoomOutActionReference.action.Clone();
-
-            zoomInZoomOutAction.performed += ZoomInZoomOut;
-            rotationAction.performed += Rotate;
+            detailedExaminationInput = new DetailedExaminationInput(Rotate, ZoomInZoomOut);
         }
 
 
@@ -41,45 +29,47 @@ namespace InteractionSystem
         {
             base.OnSelect(selector);
 
+            if (selector.TryGetRecentSelection(out Selection selection) && selection is DetailedExamination)
+            {
+                (selection as DetailedExamination).detailedExaminationInput.DisableAction();
+            }
+
             originalDistanceOffset = DistanceOffset;
             originalRotationOffset = RotationOffset;
             this.selector = selector.transform;
 
-            rotationActivationAction.Enable();
-            rotationAction.Enable();
-            zoomInZoomOutAction.Enable();
+            detailedExaminationInput.EnableAction();
         }
         protected override void OnUnselect(Selector selector)
         {
             base.OnUnselect(selector);
 
+            if (selector.TryGetRecentSelection(out Selection selection) && selection is DetailedExamination)
+            {
+                (selection as DetailedExamination).detailedExaminationInput.EnableAction();
+            }
+
             DistanceOffset = originalDistanceOffset;
             RotationOffset = originalRotationOffset;
             this.selector = null;
 
-            rotationActivationAction.Disable();
-            rotationAction.Disable();
-            zoomInZoomOutAction.Disable();
-        }
-        private void Rotate(InputAction.CallbackContext callbackContext)
-        {
-            if (rotationActivationAction.IsPressed())
-            {
-                Rotate(callbackContext.ReadValue<Vector2>());
-            }
+            detailedExaminationInput.DisableAction();
         }
         private void Rotate(Vector2 value)
         {
-            Vector2 rotationValue = rotationSpeed * value;
+            if (detailedExaminationInput.IsRotating == false)
+            {
+                return;
+            }
+
+
+
+            Vector2 rotationValue = InteractionSystemGlobalData.DetailedExaminationDataInstance.RotationSpeed * value;
 
             RotationOffset *= Quaternion.AngleAxis(-rotationValue.x, Quaternion.Inverse(transform.rotation) * selector.up);
             RotationOffset *= Quaternion.AngleAxis(rotationValue.y, Quaternion.Inverse(transform.rotation) * selector.right);
 
             OnRotate?.Invoke(value);
-        }
-        private void ZoomInZoomOut(InputAction.CallbackContext callbackContext)
-        {
-            ZoomInZoomOut(callbackContext.ReadValue<float>());
         }
         private void ZoomInZoomOut(float value)
         {

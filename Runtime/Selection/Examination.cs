@@ -5,8 +5,8 @@ using UnityEngine;
 
 namespace InteractionSystem
 {
-    [AddComponentMenu(nameof(InteractionSystem) + "/" + nameof(Examining))]
-    public class Examining : Selection
+    [AddComponentMenu(nameof(InteractionSystem) + "/" + nameof(Examination))]
+    public class Examination : Selection
     {
         [SerializeField] private AudioSource pickUpSound;
         [SerializeField] private float distanceOffset;

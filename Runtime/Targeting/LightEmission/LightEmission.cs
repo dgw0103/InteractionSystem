@@ -10,7 +10,6 @@ namespace InteractionSystem
     public class LightEmission : Targeting
     {
         [SerializeField] private RendererIntHashsetDictionary except;
-        [SerializeField] private LightEmissionData lightEmissionData;
         private List<Material> materials = new List<Material>();
         private Color[] previousTargetingColors;
 
@@ -51,6 +50,15 @@ namespace InteractionSystem
 
         protected override void SetTargetedState()
         {
+            InteractionSystemGlobalData.LightEmissionData lightEmissionData = InteractionSystemGlobalData.LightEmissionDataInstance;
+
+            if (lightEmissionData == null)
+            {
+                return;
+            }
+
+
+
             for (int i = 0; i < materials.Count; i++)
             {
                 previousTargetingColors[i] = materials[i].GetColor(lightEmissionData.EmissionColorKeyword);
@@ -59,6 +67,15 @@ namespace InteractionSystem
         }
         protected override void SetReleasedState()
         {
+            InteractionSystemGlobalData.LightEmissionData lightEmissionData = InteractionSystemGlobalData.LightEmissionDataInstance;
+
+            if (lightEmissionData == null)
+            {
+                return;
+            }
+
+
+
             for (int i = 0; i < materials.Count; i++)
             {
                 materials[i].SetColor(lightEmissionData.EmissionColorKeyword, previousTargetingColors[i]);

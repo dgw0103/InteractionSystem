@@ -12,8 +12,17 @@ namespace InteractionSystem
 
         protected void OnDisable()
         {
-            isTargeted = false;
-            SetReleasedState();
+            try
+            {
+                isTargeted = false;
+                SetReleasedState();
+            }
+            catch (System.Exception)
+            {
+                Debug.Log("error");
+                throw;
+            }
+            
         }
 
 

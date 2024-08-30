@@ -8,14 +8,14 @@ namespace InteractionSystem
     [AddComponentMenu(nameof(InteractionSystem) + "/" + nameof(Selector))]
     public class Selector : MonoBehaviour
     {
-        [SerializeField] private SelectionInput selectionInput;
+        private SelectionInput selectionInput;
         private Stack<Selection> currentSelections = new Stack<Selection>();
 
 
 
         private void Awake()
         {
-            selectionInput.Init(Unselect);
+            selectionInput = new SelectionInput(Unselect);
 
 
 
@@ -31,11 +31,11 @@ namespace InteractionSystem
         }
         private void OnEnable()
         {
-            selectionInput.EnableUnselectionAction();
+            selectionInput.EnableAction();
         }
         private void OnDisable()
         {
-            selectionInput.DisableUnselectionAction();
+            selectionInput.DisableAction();
             while (currentSelections.TryPeek(out Selection selection) && selection)
             {
                 UnselectForce(selection);

@@ -4,15 +4,15 @@ using UnityEngine.InputSystem;
 
 namespace InteractionSystem
 {
-    public class InteractionInput
+    public class InteractionInput : IInputMember
     {
-        private InputAction interactionAction;
+        private readonly InputAction interactionAction;
 
 
 
-        public InteractionInput(InputActionReference interactionActionReference, Action onStarted, Action onPerformed, Action onCanceled)
+        public InteractionInput(Action onStarted, Action onPerformed, Action onCanceled)
         {
-            interactionAction = interactionActionReference.action.Clone();
+            interactionAction = InteractionSystemGlobalData.InteractionSystemDataInstance.InputActionReference.action.Clone();
             interactionAction.started += (x) => onStarted?.Invoke();
             interactionAction.performed += (x) => onPerformed?.Invoke();
             interactionAction.canceled += (x) => onCanceled?.Invoke();
@@ -20,11 +20,12 @@ namespace InteractionSystem
 
         
 
-        public void EnableInteractionAction()
+        public void EnableAction()
         {
             interactionAction.Enable();
         }
-        public void DisableInteractionAction()
+
+        public void DisableAction()
         {
             interactionAction.Disable();
         }

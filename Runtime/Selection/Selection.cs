@@ -9,7 +9,6 @@ namespace InteractionSystem
     public abstract class Selection : MonoBehaviour
     {
         private Action onDisable;
-        public event Action OnUnselected;
 
 
 
@@ -65,8 +64,6 @@ namespace InteractionSystem
             {
                 UnsetAsThisTypeState(selector);
             }
-
-            OnUnselected?.Invoke();
         }
         protected abstract void SetAsThisTypeState(Selector selector);
         protected abstract void UnsetAsThisTypeState(Selector selector);

@@ -6,27 +6,32 @@ using System;
 
 namespace InteractionSystem
 {
-    [Serializable]
-    public class SelectionInput
+    public class SelectionInput : IInputMember
     {
-        [SerializeField] private InputActionReference unselectionActionReference;
         private InputAction unselectionAction;
+        private Action unselect;
 
 
 
-        public void Init(Action onPerformed)
+        public SelectionInput(Action unselect)
         {
-            unselectionAction = unselectionActionReference.action.Clone();
-            unselectionAction.performed += (x) => onPerformed.Invoke();
+            this.unselectionAction = InteractionSystemGlobalData.SelectionDataInstance.UnselectionActionReference.action.Clone();
+            this.unselect = unselect;
+            this.unselectionAction.performed += Unselect;
         }
 
 
 
-        public void EnableUnselectionAction()
+
+        private void Unselect(InputAction.CallbackContext callbackContext)
+        {
+            unselect?.Invoke();
+        }
+        public void EnableAction()
         {
             unselectionAction.Enable();
         }
-        public void DisableUnselectionAction()
+        public void DisableAction()
         {
             unselectionAction.Disable();
         }

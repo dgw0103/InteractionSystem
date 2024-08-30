@@ -5,7 +5,6 @@ using static InteractionSystem.InteractionSystemGlobalData;
 
 namespace InteractionSystem
 {
-    [CreateAssetMenu(fileName = nameof(InteractionSystemGlobalDataAsset), menuName = nameof(InteractionSystemGlobalDataAsset))]
     internal class InteractionSystemGlobalDataAsset : ScriptableObject
     {
         [SerializeField] private InteractionSystemData interactionSystemData;

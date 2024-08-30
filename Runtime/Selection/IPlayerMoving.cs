@@ -6,9 +6,9 @@ namespace InteractionSystem
 {
     public interface IPlayerMoving
     {
-        public bool Enabled { get; set; }
-        public void SetCameraPositionAndRotation(Vector3 position, Quaternion rotation);
-        public Vector3 CameraPosition { get; }
-        public Quaternion CameraRotation { get; }
+        bool Enabled { get; set; }
+        void SetCameraPositionAndRotation(Vector3 position, Quaternion rotation);
+        Vector3 CameraPosition { get; }
+        Quaternion CameraRotation { get; }
     }
 }

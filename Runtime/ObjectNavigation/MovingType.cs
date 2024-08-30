@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace InteractionSystem
 {
-    public enum MovingType
+    internal enum MovingType
     {
         Position = 0,
         Order = 1

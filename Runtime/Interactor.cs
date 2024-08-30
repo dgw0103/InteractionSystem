@@ -133,6 +133,5 @@ namespace InteractionSystem
                 targeting.OnReleased();
             }
         }
-        public float MaxDistance { get => maxDistance; }
     }
 }

@@ -4,12 +4,12 @@ using System;
 
 namespace InteractionSystem
 {
-    public class Navigatable : MonoBehaviour
+    internal class Navigatable : MonoBehaviour
     {
         [SerializeField] private bool isNavigated = true;
 
 
 
-        public bool IsNavigated { get => isNavigated; set => isNavigated = value; }
+        internal bool IsNavigated { get => isNavigated; set => isNavigated = value; }
     }
 }

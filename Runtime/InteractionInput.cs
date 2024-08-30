@@ -4,7 +4,7 @@ using UnityEngine.InputSystem;
 
 namespace InteractionSystem
 {
-    public class InteractionInput : IInputMember
+    internal class InteractionInput : IInputMember
     {
         private readonly InputAction interactionAction;
 
@@ -24,7 +24,6 @@ namespace InteractionSystem
         {
             interactionAction.Enable();
         }
-
         public void DisableAction()
         {
             interactionAction.Disable();

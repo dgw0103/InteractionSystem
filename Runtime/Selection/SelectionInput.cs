@@ -6,7 +6,7 @@ using System;
 
 namespace InteractionSystem
 {
-    public class SelectionInput : IInputMember
+    internal class SelectionInput : IInputMember
     {
         private InputAction unselectionAction;
         private Action unselect;

@@ -6,7 +6,7 @@ using UnityEngine.InputSystem;
 
 namespace InteractionSystem
 {
-    public class DetailedExaminationInput : IInputMember
+    internal class DetailedExaminationInput : IInputMember
     {
         private InputAction rotationActivationAction;
         private InputAction rotationAction;

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using System;
+using System.Linq;
 
 namespace InteractionSystem
 {
@@ -12,20 +13,24 @@ namespace InteractionSystem
         [SerializeField] private LightEmissionData lightEmissionData;
         [SerializeField] private SelectionData selectionData;
         [SerializeField] private DetailedExaminationData detailedExaminationData;
-        private static InteractionSystemGlobalData instance;
+        private static InteractionSystemGlobalData instance = null;
 
 
 
-        private void Awake()
+        [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
+        private static void InitInstance()
         {
             if (instance == null)
             {
-                instance = this;
+                instance = FindObjectOfType<InteractionSystemGlobalData>(true);
                 DontDestroyOnLoad(instance);
             }
             else
             {
-                Destroy(gameObject);
+                foreach (var item in FindObjectsOfType<InteractionSystemGlobalData>(true).Where((x) => x != instance))
+                {
+                    Destroy(item.gameObject);
+                }
             }
         }
 

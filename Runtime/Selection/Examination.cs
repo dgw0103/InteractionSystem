@@ -15,7 +15,7 @@ namespace InteractionSystem
         [SerializeField] private bool isMoveImmediately = false;
         private Coroutine comingCoroutine;
         private Collider[] colliders;
-        private bool[] previousIsTrigger;
+        private bool[] previousIsTriggers = new bool[0];
         private Vector3 previousLocalPosition;
         private Quaternion previousLocalRotation;
         private int previousLayer;
@@ -74,12 +74,12 @@ namespace InteractionSystem
             #endregion
 
             colliders = GetComponentsInChildren<Collider>();
-            previousIsTrigger = new bool[colliders.Length];
-            for (int i = 0; i < previousIsTrigger.Length; i++)
+            previousIsTriggers = new bool[colliders.Length];
+            for (int i = 0; i < previousIsTriggers.Length; i++)
             {
                 if (colliders[i])
                 {
-                    previousIsTrigger[i] = colliders[i].isTrigger;
+                    previousIsTriggers[i] = colliders[i].isTrigger;
                     colliders[i].isTrigger = true;
                 }
             }
@@ -98,11 +98,11 @@ namespace InteractionSystem
                 StopCoroutine(comingCoroutine);
             }
 
-            for (int i = 0; i < previousIsTrigger.Length; i++)
+            for (int i = 0; i < previousIsTriggers.Length; i++)
             {
                 if (colliders[i])
                 {
-                    colliders[i].isTrigger = previousIsTrigger[i];
+                    colliders[i].isTrigger = previousIsTriggers[i];
                 }
             }
 

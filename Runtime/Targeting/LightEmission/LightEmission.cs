@@ -9,6 +9,7 @@ namespace InteractionSystem
     [AddComponentMenu(nameof(InteractionSystem) + "/" + nameof(LightEmission))]
     public class LightEmission : Targeting
     {
+        [SerializeField] private LightEmissionData lightEmissionData;
         [SerializeField] private RendererIntHashsetDictionary except;
         private List<Material> materials = new List<Material>();
         private Color[] previousTargetingColors;
@@ -44,14 +45,17 @@ namespace InteractionSystem
                 }
             }
             previousTargetingColors = new Color[materials.Count];
+
+            if (lightEmissionData == null)
+            {
+                Debug.LogWarning($"Light emission data is null in {name}");
+            }
         }
 
 
 
         protected override void SetTargetedState()
         {
-            InteractionSystemGlobalData.LightEmissionData lightEmissionData = InteractionSystemGlobalData.LightEmissionDataInstance;
-
             if (lightEmissionData == null)
             {
                 return;
@@ -61,14 +65,12 @@ namespace InteractionSystem
 
             for (int i = 0; i < materials.Count; i++)
             {
-                previousTargetingColors[i] = materials[i].GetColor(lightEmissionData.EmissionColorKeyword);
-                materials[i].SetColor(lightEmissionData.EmissionColorKeyword, lightEmissionData.EmissionColor);
+                previousTargetingColors[i] = materials[i].GetColor(lightEmissionData.emissionColorKeyword);
+                materials[i].SetColor(lightEmissionData.emissionColorKeyword, lightEmissionData.emissionColor);
             }
         }
         protected override void SetReleasedState()
         {
-            InteractionSystemGlobalData.LightEmissionData lightEmissionData = InteractionSystemGlobalData.LightEmissionDataInstance;
-
             if (lightEmissionData == null)
             {
                 return;
@@ -78,7 +80,7 @@ namespace InteractionSystem
 
             for (int i = 0; i < materials.Count; i++)
             {
-                materials[i].SetColor(lightEmissionData.EmissionColorKeyword, previousTargetingColors[i]);
+                materials[i].SetColor(lightEmissionData.emissionColorKeyword, previousTargetingColors[i]);
             }
         }
     }

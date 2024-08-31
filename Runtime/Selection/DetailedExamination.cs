@@ -7,13 +7,12 @@ namespace InteractionSystem
 {
     public class DetailedExamination : Examination
     {
+        [SerializeField] private float zoomInOutSpeed = 1f;
         [SerializeField] private float minDistance;
         [SerializeField] private float maxDistance;
         private DetailedExaminationInput detailedExaminationInput;
         private float originalDistanceOffset;
         private Quaternion originalRotationOffset;
-        public event Action<Vector2> OnRotate;
-        public event Action<float> OnZoomInOut;
 
 
 
@@ -72,21 +71,25 @@ namespace InteractionSystem
 
             RotationOffset *= Quaternion.AngleAxis(-rotationValue.x, Quaternion.Inverse(transform.rotation) * Selector.transform.up);
             RotationOffset *= Quaternion.AngleAxis(rotationValue.y, Quaternion.Inverse(transform.rotation) * Selector.transform.right);
-
-            OnRotate?.Invoke(value);
         }
         private void ZoomInZoomOut(float value)
         {
             float scrollDirection = value / Mathf.Abs(value);
-            float afterValue = Mathf.Round(DistanceOffset + scrollDirection);
-
-
+            float scrollValue = scrollDirection * zoomInOutSpeed;
+            float afterValue = RoundAt(DistanceOffset + scrollValue, 1);
 
             if (afterValue >= minDistance && afterValue <= maxDistance)
             {
-                DistanceOffset += scrollDirection;
+                DistanceOffset += scrollValue;
+            }
 
-                OnZoomInOut?.Invoke(value);
+
+
+
+
+            float RoundAt(float value, int at)
+            {
+                return Mathf.Round(value * Mathf.Pow(10f, at)) * Mathf.Pow(0.1f, at);
             }
         }
     }

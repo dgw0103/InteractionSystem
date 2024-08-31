@@ -1,13 +1,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
 
 # Interaction system
-Help that user can directly make objects to interact with player. Also, some samples using interaction system is included.<br><br>
-![image](https://github.com/dgw0103/InteractionSystem/assets/68366554/8abe997a-3efd-46a5-ad00-ce9ad5bc6000)<br>
-↑ Interaction system simple relationship image<br><br>
-
-![image](https://github.com/dgw0103/InteractionSystem/assets/68366554/9e040ec5-5be4-4438-b0b8-7a382bd7a818)<br>
-↑ Object navigation simple relationship image<br><br>
-
+It helps player be able to interact other object. Also, some samples using interaction system is included.<br><br>
 
 ## The things you can do with this module is following...<br>
 ><b>1. Create Interaction object.</b><br>

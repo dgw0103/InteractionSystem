@@ -5,7 +5,7 @@ using UnityEditor;
 
 namespace InteractionSystemEditor
 {
-    public class InteractionSystemGlobalDataGenerator
+    internal sealed class InteractionSystemGlobalDataGenerator
     {
         private static readonly string prefabPath = AssetDatabase.GUIDToAssetPath(new GUID("82b6f9c750f135f4cb87afd7be53ad5a"));
         private static readonly string prefabName = "InteractionSystemGlobalDataPrefab";
@@ -17,7 +17,7 @@ namespace InteractionSystemEditor
         {
             GameObject prefab = AssetDatabase.LoadAssetAtPath(prefabPath, typeof(GameObject)) as GameObject;
             GameObject instantiatedPrefab = Object.Instantiate(prefab);
-            GameObject copiedPrefab = PrefabUtility.SaveAsPrefabAsset(instantiatedPrefab, $"Assets/{prefabName}.prefab");
+            GameObject copiedPrefab = PrefabUtility.SaveAsPrefabAsset(instantiatedPrefab, AssetDatabase.GenerateUniqueAssetPath($"Assets/{prefabName}.prefab"));
             PrefabUtility.InstantiatePrefab(copiedPrefab);
             Object.DestroyImmediate(instantiatedPrefab);
         }

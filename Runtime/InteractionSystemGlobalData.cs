@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using System;
 using System.Linq;
+using UnityEngine.SceneManagement;
 
 namespace InteractionSystem
 {
@@ -20,19 +21,52 @@ namespace InteractionSystem
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
         private static void InitInstance()
         {
-            if (instance == null)
+            InteractionSystemGlobalData[] interactionSystemGlobalDatas = FindObjectsOfType<InteractionSystemGlobalData>(true);
+
+            if (interactionSystemGlobalDatas.Length > 1)
             {
-                instance = FindObjectOfType<InteractionSystemGlobalData>(true);
-                DontDestroyOnLoad(instance);
+                for (int i = 0; i < interactionSystemGlobalDatas.Length; i++)
+                {
+                    if (i == 0)
+                    {
+                        continue;
+                    }
+
+                    Destroy(interactionSystemGlobalDatas[i]);
+                }
             }
             else
             {
-                foreach (var item in FindObjectsOfType<InteractionSystemGlobalData>(true).Where((x) => x != instance))
-                {
-                    Destroy(item.gameObject);
-                }
+                Debug.LogError("Please in Hierarchy window > right click > Interaction system global data prefab.");
+                return;
+            }
+
+
+
+            if (instance != null)
+            {
+                return;
+            }
+
+            InteractionSystemGlobalData interactionSystemGlobalData = interactionSystemGlobalDatas[0];
+
+            if (interactionSystemGlobalData == null)
+            {
+                Debug.LogError("Please in Hierarchy window > right click > Interaction system global data prefab.");
+                return;
+            }
+
+            instance = interactionSystemGlobalData;
+            DontDestroyOnLoad(instance);
+        }
+        private void Awake()
+        {
+            if (instance != null && instance != this)
+            {
+                Destroy(gameObject);
             }
         }
+
 
 
 

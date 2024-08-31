@@ -23,10 +23,15 @@ It helps player be able to interact other object. Also, some samples using inter
 5. Download and import.
 
 ## Tutorial
-In this system, there are two entities representatively, which Interactor, interaction object. This tutorial can help you use this system.
+This tutorial can help you use this system.
+
+### Generate global data for interaction system
+1. In hierarchy window -> right click -> click the 'Interaction system global data prefab'.
+2. A prefab is generated inside current scene and under the Assets folder.
 
 ### Make interactor
-
+1. Add an 'Interctor' component to gameObject that will use as player's eyes. (In case of FPS, the gameObject is maybe main camera.)
+2. And then, set the 'Ray shooter' field to the player's eyes gameObject.
 
 ### Make interaction object
 1. Create a script and inherited from 'InteractionObject'.

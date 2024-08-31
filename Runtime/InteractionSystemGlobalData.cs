@@ -23,6 +23,12 @@ namespace InteractionSystem
         {
             InteractionSystemGlobalData[] interactionSystemGlobalDatas = FindObjectsOfType<InteractionSystemGlobalData>(true);
 
+            if (interactionSystemGlobalDatas.Length == 0)
+            {
+                Debug.LogError("Please in Hierarchy window > right click > Interaction system global data prefab.");
+                return;
+            }
+
             if (interactionSystemGlobalDatas.Length > 1)
             {
                 for (int i = 0; i < interactionSystemGlobalDatas.Length; i++)
@@ -35,26 +41,10 @@ namespace InteractionSystem
                     Destroy(interactionSystemGlobalDatas[i]);
                 }
             }
-            else
-            {
-                Debug.LogError("Please in Hierarchy window > right click > Interaction system global data prefab.");
-                return;
-            }
 
 
-
-            if (instance != null)
-            {
-                return;
-            }
 
             InteractionSystemGlobalData interactionSystemGlobalData = interactionSystemGlobalDatas[0];
-
-            if (interactionSystemGlobalData == null)
-            {
-                Debug.LogError("Please in Hierarchy window > right click > Interaction system global data prefab.");
-                return;
-            }
 
             instance = interactionSystemGlobalData;
             DontDestroyOnLoad(instance);

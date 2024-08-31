@@ -16,19 +16,23 @@ It helps player be able to interact other object. Also, some samples using inter
 <img src="https://github.com/dgw0103/InteractionSystem/assets/68366554/1b4cc7d5-f753-4175-a2b6-6f50ad7bce9d" width="485" height="300"/><br><br>
 
 ## Apply this package to your unity project
-1. Copy this url.
-2. Open the Package Manager window in Unity.
+1. Copy this url. (https://github.com/dgw0103/InteractionSystem.git)
+2. In Unity, open the Package Manager window.
 3. Click plus icon in left up.
-4. Paste git url
+4. Paste coiped.
 5. Download and import.
 
-## Make custom interaction object
-### Simple interactable object
-1. Create a script as component for interaction object that you want to make.
-2. The script inherits from the 'InteractionObject'.
-3. Implement abstract functions.
-4. Add the component to GameObject to use.
-5. If you want to get the GameObject light emission when the interactor is close with interaction object enough to interact, add the 'LightEmission' component too.
+## Tutorial
+In this system, there are two entities representatively, which Interactor, interaction object. This tutorial can help you use this system.
+
+### Make interactor
+
+
+### Make interaction object
+1. Create a script and inherited from 'InteractionObject'.
+2. Implement abstract functions.
+3. Add the component to GameObject to use.
+4. If you want to use the 'Light emission' function(like example above), add 'LightEmissoin' component too and set fields 
 
 ## About the 'Selector'.
 You can want to focus a GameObject by interaction such as [Samples using interaction system is following...](#Samples-using-interaction-system-is-following).<br>

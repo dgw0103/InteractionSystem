@@ -1,5 +1,12 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
 
+# Language
+- [Korean](#상호작용-시스템)
+- [English](#Interaction-system)
+
+# 상호작용 시스템
+
+
 # Interaction system
 It helps player be able to interact other object. Also, some samples using interaction system is included.<br><br>
 
@@ -28,6 +35,7 @@ This tutorial can help you use this system.
 ### Generate global data for interaction system
 1. In hierarchy window -> right click -> click the 'Interaction system global data prefab'.
 2. A prefab is generated inside current scene and under the Assets folder.
+3. Set values in the prefab's fields.
 
 ### Make interactor
 1. Add an 'Interctor' component to gameObject that will use as player's eyes. (In case of FPS, the gameObject is maybe main camera.)

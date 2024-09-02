@@ -6,7 +6,7 @@ It helps player be able to interact other object. Also, some samples using inter
 ## The things you can do with this module is following...<br>
 ><b>1. It can create Interaction object.</b><br>
 <img src="https://github.com/dgw0103/InteractionSystem/assets/68366554/dba2dbc0-3790-4242-8c86-b34d4c0b0232" width="485" height="300"/><br><br>
-><b>2. It can pick up interaction object. And then, can rotate and zoom in/out that.
+><b>2. It can pick up interaction object. And then, can rotate and zoom in/out that.</b>
 ><img src="https://github.com/dgw0103/InteractionSystem/assets/68366554/a36b3258-d57c-465d-ac7a-5b4c742909dc" width="485" height="300"/><br><br>
 ><img src="https://github.com/dgw0103/InteractionSystem/assets/68366554/1b4cc7d5-f753-4175-a2b6-6f50ad7bce9d" width="485" height="300"/><br><br>
 ><b>3. Can use the UI's 'Navigation' function to non-UI GameObject.</b><br>

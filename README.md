@@ -1,7 +1,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
 
 # Interaction system
-It helps player be able to interact other object. Also, some samples using interaction system is included.<br><br>
+It helps player be able to interact other object. If you find any improvable points after using this package, please don't hesitate to let me know about that.<br><br>
 
 ## The things you can do with this module is following...<br>
 ><b>1. It can create Interaction object.</b><br>

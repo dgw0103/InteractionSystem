@@ -43,12 +43,14 @@ To use this system, it must generate global data object. It is a gameObject with
 
 ### Make selector
 Selector is a component for interacting object that is inherited from 'Selection' class.<br>
-1. Add component to gameObject that added 'Interactor' component.
+1. Add 'Selector' component to gameObject that added 'Interactor' component.
+2. Create a class implementing 'PlayerMoving' and add this at the gameObject that added 'Selector'. ('PlayerMoving' let player stop moving and rotating camera when you select something.)
+※ 'PlayerMoving' In 'PlayerMoving', OnEnable and OnDisable event function call each EnableMovingAndRotating = true/false.
 
 ### Make examination object
 1. Add a 'Examination' component at the 'Interaction object'.
-2. 'Selector.Select' function needs a 'Selection' type parameter. And the 'Examination' type is 'Selection' type.
-I intend that you call the 'Selector.Select' from abstract functions of 'InteractionObject'.
+2. 'Selector.Select' function needs a 'Selection' type parameter. And the 'Examination' type is 'Selection' type. 
+※ I intend that you call the 'Selector.Select' from abstract functions of 'InteractionObject'.
 
 # License
 MIT License

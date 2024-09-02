@@ -37,22 +37,20 @@ To use this system, it must generate global data object. It is a gameObject with
 ### Make interaction object
 1. Create a script and inherited from 'InteractionObject'.
 2. Implement abstract functions.
-3. Add the component to GameObject to use.
-4. If you want to use the 'Light emission' function(like example above), add 'LightEmissoin' component.
-5. 'Light emission data' field is for scriptable object asset and can generate at Project window -> right click -> Interaction system -> Targeting -> Light emission data.
+3. Add the component to gameObject to use.
+4. Add any collider component.
+5. Set layer of the gameObject as same with Interaction system data/Interaction layer mask of Interaction system global data.
+6. If you want to use the 'Light emission' function(like example above), add 'LightEmissoin' component.
+7. 'Light emission data' field is for scriptable object asset and can generate at Project window -> right click -> Interaction system -> Targeting -> Light emission data.
 
 ### Make selector
+Selector is a component for interacting object that is inherited from 'Selection' class.<br>
+1. Add component to gameObject that added 'Interactor' component.
 
-## About the 'Selector'.
-You can want to focus a GameObject by interaction such as [Samples using interaction system is following...](#Samples-using-interaction-system-is-following).<br>
-And, the case you want to interact again to another after interact to a GameObject can be occurred.<br><br>
-
-'Selector' is about this part.<br><br>
-
-Let's say you interact to this 'A', 'B' two objects.<br>
-If you select sequently to 'A', 'B' by 'Examining', you are focusing to 'B'.<br>
-And then, if you unselect once, you are focusing to 'A', and the unselect once makes no focus to anyone.<br>
-In case 'A', 'B', 'C', if the interaction order is 'A' -> 'B' -> 'C', the unselection order will be 'C' -> 'B' -> 'A'.<br><br>
+### Make examination object
+1. Add a 'Examination' component at the 'Interaction object'.
+2. 'Selector.Select' function needs a 'Selection' type parameter. And the 'Examination' type is 'Selection' type.
+I intend that you call the 'Selector.Select' from abstract functions of 'InteractionObject'.
 
 # License
 MIT License
